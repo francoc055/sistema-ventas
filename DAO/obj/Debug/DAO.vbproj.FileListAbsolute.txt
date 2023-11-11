@@ -1,0 +1,14 @@
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\DAO.dll
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\DAO.pdb
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\DAO.xml
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\entidades.dll
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\entidades.pdb
+C:\Users\Franco\Desktop\sistema\DAO\bin\Debug\entidades.xml
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.vbproj.AssemblyReference.cache
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.Resources.resources
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.vbproj.GenerateResource.cache
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.vbproj.CoreCompileInputs.cache
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.vbproj.CopyComplete
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.dll
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.xml
+C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.pdb

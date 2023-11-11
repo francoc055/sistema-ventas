@@ -1,0 +1,13 @@
+C:\Users\Franco\Desktop\sistema\entidades\bin\Debug\entidades.dll
+C:\Users\Franco\Desktop\sistema\entidades\bin\Debug\entidades.pdb
+C:\Users\Franco\Desktop\sistema\entidades\bin\Debug\entidades.xml
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.vbproj.AssemblyReference.cache
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.Resources.resources
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.vbproj.GenerateResource.cache
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.vbproj.CoreCompileInputs.cache
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.dll
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.xml
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.pdb
+C:\Users\Franco\Desktop\sistema\entidades\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Franco\Desktop\sistema\entidades\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Franco\Desktop\sistema\entidades\obj\Debug\entidades.vbproj.CopyComplete
