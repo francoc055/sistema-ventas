@@ -22,7 +22,7 @@ Partial Class FrmClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -36,13 +36,14 @@ Partial Class FrmClientes
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtFiltrar = New System.Windows.Forms.TextBox()
         Me.btnBorrar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.btnCrear = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridClientes = New System.Windows.Forms.DataGridView()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -84,13 +85,15 @@ Partial Class FrmClientes
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.GroupBoxCliente)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
+        Me.TabPage1.Controls.Add(Me.txtFiltrar)
         Me.TabPage1.Controls.Add(Me.btnBorrar)
         Me.TabPage1.Controls.Add(Me.btnNuevo)
         Me.TabPage1.Controls.Add(Me.btnActualizar)
         Me.TabPage1.Controls.Add(Me.btnCrear)
         Me.TabPage1.Controls.Add(Me.TableLayoutPanel1)
+        Me.TabPage1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -109,6 +112,7 @@ Partial Class FrmClientes
         Me.GroupBoxCliente.Controls.Add(Me.Label3)
         Me.GroupBoxCliente.Controls.Add(Me.txtId)
         Me.GroupBoxCliente.Controls.Add(Me.Label2)
+        Me.GroupBoxCliente.Font = New System.Drawing.Font("Times New Roman", 11.0!)
         Me.GroupBoxCliente.Location = New System.Drawing.Point(41, 22)
         Me.GroupBoxCliente.Name = "GroupBoxCliente"
         Me.GroupBoxCliente.Size = New System.Drawing.Size(200, 289)
@@ -120,7 +124,7 @@ Partial Class FrmClientes
         '
         Me.txtNombre.Location = New System.Drawing.Point(67, 65)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(127, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(127, 24)
         Me.txtNombre.TabIndex = 6
         '
         'LabelId
@@ -128,7 +132,7 @@ Partial Class FrmClientes
         Me.LabelId.AutoSize = True
         Me.LabelId.Location = New System.Drawing.Point(28, 250)
         Me.LabelId.Name = "LabelId"
-        Me.LabelId.Size = New System.Drawing.Size(16, 13)
+        Me.LabelId.Size = New System.Drawing.Size(20, 17)
         Me.LabelId.TabIndex = 13
         Me.LabelId.Text = "Id"
         '
@@ -136,7 +140,7 @@ Partial Class FrmClientes
         '
         Me.txtTelefono.Location = New System.Drawing.Point(67, 129)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(127, 20)
+        Me.txtTelefono.Size = New System.Drawing.Size(127, 24)
         Me.txtTelefono.TabIndex = 14
         '
         'Label4
@@ -144,7 +148,7 @@ Partial Class FrmClientes
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(6, 196)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(38, 13)
+        Me.Label4.Size = New System.Drawing.Size(49, 17)
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Correo"
         '
@@ -152,7 +156,7 @@ Partial Class FrmClientes
         '
         Me.txtCorreo.Location = New System.Drawing.Point(66, 193)
         Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(127, 20)
+        Me.txtCorreo.Size = New System.Drawing.Size(127, 24)
         Me.txtCorreo.TabIndex = 8
         '
         'Label3
@@ -160,7 +164,7 @@ Partial Class FrmClientes
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(1, 132)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 13)
+        Me.Label3.Size = New System.Drawing.Size(59, 17)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "Telefono"
         '
@@ -168,7 +172,7 @@ Partial Class FrmClientes
         '
         Me.txtId.Location = New System.Drawing.Point(85, 247)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(85, 20)
+        Me.txtId.Size = New System.Drawing.Size(85, 24)
         Me.txtId.TabIndex = 9
         '
         'Label2
@@ -176,19 +180,20 @@ Partial Class FrmClientes
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.Size = New System.Drawing.Size(56, 17)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Nombre"
         '
-        'TextBox1
+        'txtFiltrar
         '
-        Me.TextBox1.Location = New System.Drawing.Point(450, 22)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(140, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.txtFiltrar.Location = New System.Drawing.Point(541, 18)
+        Me.txtFiltrar.Name = "txtFiltrar"
+        Me.txtFiltrar.Size = New System.Drawing.Size(206, 20)
+        Me.txtFiltrar.TabIndex = 5
         '
         'btnBorrar
         '
+        Me.btnBorrar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.btnBorrar.Location = New System.Drawing.Point(389, 336)
         Me.btnBorrar.Name = "btnBorrar"
         Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
@@ -198,7 +203,8 @@ Partial Class FrmClientes
         '
         'btnNuevo
         '
-        Me.btnNuevo.Location = New System.Drawing.Point(541, 338)
+        Me.btnNuevo.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnNuevo.Location = New System.Drawing.Point(541, 336)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
         Me.btnNuevo.TabIndex = 4
@@ -207,6 +213,7 @@ Partial Class FrmClientes
         '
         'btnActualizar
         '
+        Me.btnActualizar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.btnActualizar.Location = New System.Drawing.Point(245, 336)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
@@ -216,6 +223,7 @@ Partial Class FrmClientes
         '
         'btnCrear
         '
+        Me.btnCrear.Font = New System.Drawing.Font("Times New Roman", 10.0!)
         Me.btnCrear.Location = New System.Drawing.Point(107, 336)
         Me.btnCrear.Name = "btnCrear"
         Me.btnCrear.Size = New System.Drawing.Size(95, 23)
@@ -243,14 +251,14 @@ Partial Class FrmClientes
         Me.DataGridClientes.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataGridClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridClientes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridClientes.EnableHeadersVisualStyles = False
@@ -260,6 +268,16 @@ Partial Class FrmClientes
         Me.DataGridClientes.RowHeadersVisible = False
         Me.DataGridClientes.Size = New System.Drawing.Size(454, 250)
         Me.DataGridClientes.TabIndex = 0
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(474, 16)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 22)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Filtrar"
         '
         'FrmClientes
         '
@@ -287,20 +305,21 @@ Partial Class FrmClientes
     Friend WithEvents Label1 As Label
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents txtId As TextBox
-    Friend WithEvents txtCorreo As TextBox
+    Friend WithEvents GroupBoxCliente As GroupBox
     Friend WithEvents txtNombre As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents LabelId As Label
+    Friend WithEvents txtTelefono As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtCorreo As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtId As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtFiltrar As TextBox
     Friend WithEvents btnBorrar As Button
     Friend WithEvents btnNuevo As Button
     Friend WithEvents btnActualizar As Button
     Friend WithEvents btnCrear As Button
-    Friend WithEvents LabelId As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridClientes As DataGridView
-    Friend WithEvents txtTelefono As TextBox
-    Friend WithEvents GroupBoxCliente As GroupBox
+    Friend WithEvents Label5 As Label
 End Class

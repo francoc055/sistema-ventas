@@ -4,18 +4,17 @@ Public Class FrmClientes
     Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BloquearBotones()
 
-        Dim dao = ClientesDao.ObjetoAcceso()
-        Dim lista As List(Of Clientes) = dao.GetAll()
-        CargarDataGrid(DataGridClientes, lista)
+
+        CargarDataGrid()
     End Sub
 
-    Public Function BloquearBotones()
+    Public Sub BloquearBotones()
         txtId.Visible = False
         LabelId.Visible = False
         btnActualizar.Enabled = False
         btnBorrar.Enabled = False
         btnCrear.Enabled = True
-    End Function
+    End Sub
 
     'creo un objeto Clientes y lo cargo en la BD
     Private Sub btnCrear_Click(sender As Object, e As EventArgs) Handles btnCrear.Click
@@ -38,14 +37,14 @@ Public Class FrmClientes
 
         Dim dao = ClientesDao.ObjetoAcceso()
         dao.Add(nuevoCliente)
-        Dim lista As List(Of Clientes) = dao.GetAll()
-        CargarDataGrid(DataGridClientes, lista)
         LimpiarGroupBox()
     End Sub
 
     'cargo datagrid en base a la lista que traigo de la BD
-    Private Sub CargarDataGrid(data As DataGridView, lista As List(Of Clientes))
-        data.DataSource = lista
+    Private Sub CargarDataGrid()
+        Dim dao = ClientesDao.ObjetoAcceso()
+        Dim lista As List(Of Clientes) = dao.GetAll()
+        DataGridClientes.DataSource = lista
     End Sub
 
     'cuando hago click en una celda verifico el indice y lo cargo en los textBox
@@ -108,9 +107,7 @@ Public Class FrmClientes
 
         Dim dao = ClientesDao.ObjetoAcceso()
         dao.Update(ActualizarCliente)
-
-        Dim lista As List(Of Clientes) = dao.GetAll()
-        CargarDataGrid(DataGridClientes, lista)
+        CargarDataGrid()
         LimpiarGroupBox()
         BloquearBotones()
 
@@ -124,8 +121,7 @@ Public Class FrmClientes
                 Dim dao = ClientesDao.ObjetoAcceso()
                 Dim borrarCliente As Clientes = dao.GetById(id)
                 dao.Delete(id)
-                Dim lista As List(Of Clientes) = dao.GetAll()
-                CargarDataGrid(DataGridClientes, lista)
+                CargarDataGrid()
                 LimpiarGroupBox()
                 BloquearBotones()
             Else
@@ -138,4 +134,24 @@ Public Class FrmClientes
 
     End Sub
 
+    Private Sub txtFiltrar_TextChanged(sender As Object, e As EventArgs) Handles txtFiltrar.TextChanged
+        If txtFiltrar.Text <> "" Then
+
+            DataGridClientes.CurrentCell = Nothing
+            For Each row As DataGridViewRow In DataGridClientes.Rows
+                row.Visible = False
+            Next
+
+            For Each row As DataGridViewRow In DataGridClientes.Rows
+                For Each cell As DataGridViewCell In row.Cells
+                    If (cell.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) = 0 Then
+                        row.Visible = True
+                        Exit For
+                    End If
+                Next
+            Next
+        Else
+            CargarDataGrid()
+        End If
+    End Sub
 End Class

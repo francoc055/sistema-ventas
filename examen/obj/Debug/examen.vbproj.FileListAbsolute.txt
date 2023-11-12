@@ -19,3 +19,7 @@ C:\Users\Franco\Desktop\sistema\examen\bin\Debug\entidades.xml
 C:\Users\Franco\Desktop\sistema\examen\bin\Debug\DAO.dll
 C:\Users\Franco\Desktop\sistema\examen\bin\Debug\DAO.pdb
 C:\Users\Franco\Desktop\sistema\examen\bin\Debug\DAO.xml
+C:\Users\Franco\Desktop\sistema\examen\obj\Debug\examen.FrmInicio.resources
+C:\Users\Franco\Desktop\sistema\examen\obj\Debug\examen.FrmProductos.resources
+C:\Users\Franco\Desktop\sistema\examen\obj\Debug\examen.FrmVentas.resources
+C:\Users\Franco\Desktop\sistema\examen\obj\Debug\examen.FrmAltaVenta.resources
