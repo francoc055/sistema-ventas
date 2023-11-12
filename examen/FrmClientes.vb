@@ -38,6 +38,7 @@ Public Class FrmClientes
         Dim dao = ClientesDao.ObjetoAcceso()
         dao.Add(nuevoCliente)
         LimpiarGroupBox()
+        CargarDataGrid()
     End Sub
 
     'cargo datagrid en base a la lista que traigo de la BD

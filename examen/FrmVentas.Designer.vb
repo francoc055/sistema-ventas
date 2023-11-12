@@ -22,7 +22,7 @@ Partial Class FrmVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -35,6 +35,7 @@ Partial Class FrmVentas
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.btnCrear = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtId = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -63,6 +64,7 @@ Partial Class FrmVentas
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.txtId)
         Me.TabPage1.Controls.Add(Me.TableLayoutPanel1)
         Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.txtFiltrar)
@@ -84,12 +86,12 @@ Partial Class FrmVentas
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.DataGridVentas, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(390, 48)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(128, 47)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(373, 255)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(509, 255)
         Me.TableLayoutPanel1.TabIndex = 35
         '
         'DataGridVentas
@@ -98,14 +100,14 @@ Partial Class FrmVentas
         Me.DataGridVentas.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.DataGridVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataGridVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridVentas.EnableHeadersVisualStyles = False
@@ -113,7 +115,7 @@ Partial Class FrmVentas
         Me.DataGridVentas.Name = "DataGridVentas"
         Me.DataGridVentas.ReadOnly = True
         Me.DataGridVentas.RowHeadersVisible = False
-        Me.DataGridVentas.Size = New System.Drawing.Size(367, 249)
+        Me.DataGridVentas.Size = New System.Drawing.Size(503, 249)
         Me.DataGridVentas.TabIndex = 0
         '
         'Label5
@@ -179,6 +181,13 @@ Partial Class FrmVentas
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'txtId
+        '
+        Me.txtId.Location = New System.Drawing.Point(22, 264)
+        Me.txtId.Name = "txtId"
+        Me.txtId.Size = New System.Drawing.Size(49, 20)
+        Me.txtId.TabIndex = 36
+        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -209,4 +218,5 @@ Partial Class FrmVentas
     Friend WithEvents btnCrear As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridVentas As DataGridView
+    Friend WithEvents txtId As TextBox
 End Class

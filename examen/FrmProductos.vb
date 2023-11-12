@@ -34,9 +34,10 @@ Public Class FrmProductos
         nuevoProducto.categoria = categoria
 
         Dim dao = ProductosDao.ObjetoAcceso()
-        dao.Add(nuevoProducto)
+        Dim ultimoID As Integer = dao.Add(nuevoProducto)
         CargarDataGrid()
         LimpiarGroupBox()
+        MessageBox.Show(ultimoID)
     End Sub
 
     Private Sub CargarDataGrid()

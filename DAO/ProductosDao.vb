@@ -30,9 +30,13 @@ Public Class ProductosDao
             comando.Parameters.AddWithValue("@Precio", producto.precio)
             comando.Parameters.AddWithValue("@Categoria", producto.categoria)
 
-
             comando.ExecuteNonQuery()
+
+            'comando.ExecuteNonQuery()
+            comando.CommandText = "SELECT IDENT_CURRENT('productos')"
+            Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
             Console.WriteLine("producto insertado")
+            Return ultimoId
 
         Catch e As Exception
             Console.WriteLine(e.ToString())

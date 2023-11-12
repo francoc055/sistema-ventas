@@ -31,9 +31,12 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@fecha", venta.fecha)
             comando.Parameters.AddWithValue("@total", venta.total)
 
-
             comando.ExecuteNonQuery()
-            Console.WriteLine("venta insertado")
+
+            'comando.ExecuteNonQuery()
+            comando.CommandText = "SELECT IDENT_CURRENT('ventas')"
+            Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
+            Return ultimoId
 
         Catch e As Exception
             Console.WriteLine(e.ToString())
@@ -120,21 +123,25 @@ Public Class VentasDao
     End Function
 
     Public Function Delete(id As Integer)
-        Try
-            comando.Parameters.Clear()
-            conexion.Open()
-            comando.CommandText = "delete from ventas where ID = @id"
-            comando.Parameters.AddWithValue("@id", id)
-            comando.ExecuteNonQuery()
+        comando.Parameters.Clear()
+        conexion.Open()
+        Using transaction As SqlTransaction = conexion.BeginTransaction
+            Try
+                comando.CommandText = "delete from ventas where ID = @id;
+                                        delete from ventasitems where IDventa = @id;"
+                comando.Parameters.AddWithValue("@id", id)
+                comando.Transaction = transaction
+                comando.ExecuteNonQuery()
 
-            Console.WriteLine("venta eliminada")
+                transaction.Commit()
+            Catch ex As Exception
+                transaction.Rollback()
+                Console.WriteLine(ex.ToString())
+            Finally
+                conexion.Close()
+            End Try
+        End Using
 
-
-        Catch ex As Exception
-            Console.WriteLine(ex.ToString())
-        Finally
-            conexion.Close()
-        End Try
     End Function
 
 
@@ -147,10 +154,10 @@ Public Class VentasDao
         End Set
     End Property
 
-    Public Function AddVentasItems(idVenta As Integer, idProducto As Integer, precioUnitario As Decimal, cantidad As Integer, precioTotal As Decimal)
+    Public Function AddVentasItems(transaction As SqlTransaction, idVenta As Integer, idProducto As Integer, precioUnitario As Decimal, cantidad As Integer, precioTotal As Decimal)
         Try
             comando.Parameters.Clear()
-            conexion.Open()
+            'conexion.Open()
             comando.CommandText = $"insert into ventasitems (IDVenta, IDProducto, PrecioUnitario, Cantidad, PrecioTotal) values
                                     (@IDVenta, @IDProducto, @PrecioUnitario, @Cantidad, @PrecioTotal)"
             comando.Parameters.AddWithValue("@IDVenta", idVenta)
@@ -158,15 +165,13 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@PrecioUnitario", precioUnitario)
             comando.Parameters.AddWithValue("@Cantidad", cantidad)
             comando.Parameters.AddWithValue("@PrecioTotal", precioTotal)
-
+            comando.Transaction = transaction
 
             comando.ExecuteNonQuery()
 
 
         Catch e As Exception
             Console.WriteLine(e.ToString())
-        Finally
-            conexion.Close()
         End Try
     End Function
 

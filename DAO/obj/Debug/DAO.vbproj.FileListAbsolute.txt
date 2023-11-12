@@ -12,3 +12,17 @@ C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.vbproj.CopyComplete
 C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.dll
 C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.xml
 C:\Users\Franco\Desktop\sistema\DAO\obj\Debug\DAO.pdb
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\DAO.dll
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\DAO.pdb
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\DAO.xml
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\entidades.dll
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\entidades.pdb
+C:\Users\PC\Desktop\sistema-ventas\DAO\bin\Debug\entidades.xml
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.vbproj.AssemblyReference.cache
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.Resources.resources
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.vbproj.GenerateResource.cache
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.vbproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.vbproj.CopyComplete
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.dll
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.xml
+C:\Users\PC\Desktop\sistema-ventas\DAO\obj\Debug\DAO.pdb

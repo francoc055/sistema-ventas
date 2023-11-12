@@ -1,8 +1,16 @@
 ﻿Imports entidades
 Imports DAO
-
+Imports System.Data.SqlClient
 
 Public Class FrmAltaVenta
+
+    Public Sub New()
+
+    End Sub
+    Public Sub New(cliente As Clientes)
+
+    End Sub
+
     Private Sub FrmAltaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarDataGridCorreos()
         CargarComboboxProductos()
@@ -103,24 +111,19 @@ Public Class FrmAltaVenta
 
     Private Sub btnCrearVenta_Click(sender As Object, e As EventArgs) Handles btnCrearVenta.Click
         Dim dao = VentasDao.ObjetoAcceso()
-        'cargar ventasitems
+
+        Dim venta As Ventas = New Ventas()
+        venta.idCliente = Convert.ToInt32(txtId.Text)
+        venta.fecha = New DateTime().Now()
+        venta.total = CalcularTotal()
+        Dim idVenta = dao.Add(venta)
+        MessageBox.Show(idVenta)
+
+        InsertarProductosDeUnaVenta(dao, idVenta)
 
 
-        For Each fila As DataGridViewRow In DataGridProducto.Rows
-            Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ColumnID").Value)
-            Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("ColumnaPrecio").Value)
-            Dim cantidad As Integer = Convert.ToInt32(fila.Cells("ColumnaCant").Value)
-            Dim idCliente As Integer = Convert.ToInt32(txtId.Text)
-
-        Next
-
-
-        'Dim venta As Ventas = New Ventas()
-        'venta.idCliente = Convert.ToInt32(txtId)
-        'venta.fecha = New DateTime().Now()
-
-        'Me.DialogResult = DialogResult.OK
-        'Me.Close()
+        Me.DialogResult = DialogResult.OK
+        Me.Close()
     End Sub
 
     'precio unitario, precio total 
@@ -131,11 +134,40 @@ Public Class FrmAltaVenta
     Private Function CalcularTotal() As Decimal
         Dim precioTotal As Decimal = 0
         For Each fila As DataGridViewRow In DataGridProducto.Rows
-            If fila.Cells("ColumnaPrecio").Value Then
-                precioTotal += fila.Cells("ColumnaPrecio").Value
-            End If
+            precioTotal += Convert.ToInt32(fila.Cells("ColumnaPrecio").Value) * Convert.ToInt32(fila.Cells("ColumnaCant").Value)
         Next
 
         Return precioTotal
+    End Function
+
+    Private Function CalcularTotalDeUnProducto(fila As DataGridViewRow) As Decimal
+        Dim precioTotal As Decimal = 0
+        precioTotal += Convert.ToInt32(fila.Cells("ColumnaPrecio").Value) * Convert.ToInt32(fila.Cells("ColumnaCant").Value)
+        Return precioTotal
+    End Function
+
+    Public Function InsertarProductosDeUnaVenta(dao As VentasDao, idVenta As Integer)
+        If DataGridProducto.Rows.Count > 0 And txtId.Text <> Nothing Then
+            Dim conexion = dao.connection
+            conexion.Open()
+            Using transaction As SqlTransaction = conexion.BeginTransaction()
+                Try
+                    For Each fila As DataGridViewRow In DataGridProducto.Rows
+                        Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ColumnID").Value)
+                        Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("ColumnaPrecio").Value)
+                        Dim cantidad As Integer = Convert.ToInt32(fila.Cells("ColumnaCant").Value)
+                        Dim idCliente As Integer = Convert.ToInt32(txtId.Text)
+                        Dim precioTotalVI = CalcularTotalDeUnProducto(fila)
+                        dao.AddVentasItems(transaction, idVenta, idProducto, precioUnitario, cantidad, precioTotalVI)
+                    Next
+                    transaction.Commit()
+                Catch ex As Exception
+                    transaction.Rollback()
+                    MessageBox.Show(ex.ToString())
+                Finally
+                    conexion.Close()
+                End Try
+            End Using
+        End If
     End Function
 End Class
