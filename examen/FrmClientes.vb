@@ -46,6 +46,11 @@ Public Class FrmClientes
         Dim dao = ClientesDao.ObjetoAcceso()
         Dim lista As List(Of Clientes) = dao.GetAll()
         DataGridClientes.DataSource = lista
+        For Each f As DataGridViewRow In DataGridClientes.Rows
+            If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
+                DataGridClientes.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
+            End If
+        Next
     End Sub
 
     'cuando hago click en una celda verifico el indice y lo cargo en los textBox
@@ -53,6 +58,7 @@ Public Class FrmClientes
 
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DataGridClientes.Rows(e.RowIndex)
+            fila.Selected = False
 
             Dim nombre As String = fila.Cells("cliente").Value
             Dim telefono As String = fila.Cells("telefono").Value
@@ -154,5 +160,16 @@ Public Class FrmClientes
         Else
             CargarDataGrid()
         End If
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Dim formInicio = FrmInicio.ObtenerForm()
+        formInicio.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub FrmClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Dim formInicio = FrmInicio.ObtenerForm()
+        formInicio.Show()
     End Sub
 End Class

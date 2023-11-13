@@ -25,6 +25,7 @@ Partial Class FrmProductos
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmProductos))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -66,12 +67,24 @@ Partial Class FrmProductos
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.btnSalir)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 65)
         Me.Panel1.TabIndex = 0
+        '
+        'btnSalir
+        '
+        Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
+        Me.btnSalir.FlatAppearance.BorderSize = 0
+        Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSalir.Location = New System.Drawing.Point(744, 14)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(32, 33)
+        Me.btnSalir.TabIndex = 2
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -362,6 +375,7 @@ Partial Class FrmProductos
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmProductos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmProductos"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -408,4 +422,5 @@ Partial Class FrmProductos
     Friend WithEvents precioMin As NumericUpDown
     Friend WithEvents btnFiltrarPorPrecio As Button
     Friend WithEvents LimpiarFiltros As Button
+    Friend WithEvents btnSalir As Button
 End Class

@@ -44,6 +44,11 @@ Public Class FrmProductos
         Dim dao = ProductosDao.ObjetoAcceso()
         Dim lista As List(Of Productos) = dao.GetAll()
         DataGridProductos.DataSource = lista
+        For Each f As DataGridViewRow In DataGridProductos.Rows
+            If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
+                DataGridProductos.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
+            End If
+        Next
     End Sub
 
     Public Sub LimpiarGroupBox()
@@ -166,5 +171,16 @@ Public Class FrmProductos
         txtFiltrar.Text = String.Empty
         precioMin.Value = precioMin.Minimum
         precioMax.Value = precioMax.Minimum
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Dim formInicio = FrmInicio.ObtenerForm()
+        formInicio.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub FrmProductos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Dim formInicio = FrmInicio.ObtenerForm()
+        formInicio.Show()
     End Sub
 End Class

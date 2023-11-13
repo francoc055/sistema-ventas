@@ -22,11 +22,14 @@ Partial Class FrmClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientes))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBoxCliente = New System.Windows.Forms.GroupBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.LabelId = New System.Windows.Forms.Label()
@@ -43,7 +46,6 @@ Partial Class FrmClientes
         Me.btnCrear = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridClientes = New System.Windows.Forms.DataGridView()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -55,12 +57,24 @@ Partial Class FrmClientes
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.btnSalir)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 57)
         Me.Panel1.TabIndex = 0
+        '
+        'btnSalir
+        '
+        Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
+        Me.btnSalir.FlatAppearance.BorderSize = 0
+        Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSalir.Location = New System.Drawing.Point(736, 12)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(32, 33)
+        Me.btnSalir.TabIndex = 1
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -100,6 +114,16 @@ Partial Class FrmClientes
         Me.TabPage1.Size = New System.Drawing.Size(792, 367)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Acciones"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(474, 16)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 22)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Filtrar"
         '
         'GroupBoxCliente
         '
@@ -241,7 +265,7 @@ Partial Class FrmClientes
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 256.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(460, 256)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -249,8 +273,8 @@ Partial Class FrmClientes
         '
         Me.DataGridClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridClientes.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.DataGridClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.DataGridClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataGridClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.DataGridClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -269,16 +293,6 @@ Partial Class FrmClientes
         Me.DataGridClientes.Size = New System.Drawing.Size(454, 250)
         Me.DataGridClientes.TabIndex = 0
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(474, 16)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 22)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Filtrar"
-        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -287,6 +301,7 @@ Partial Class FrmClientes
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmClientes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -322,4 +337,5 @@ Partial Class FrmClientes
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridClientes As DataGridView
     Friend WithEvents Label5 As Label
+    Friend WithEvents btnSalir As Button
 End Class

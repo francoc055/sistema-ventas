@@ -4,16 +4,32 @@ Imports System.Data.SqlClient
 
 Public Class FrmAltaVenta
 
+    Private cliente As Clientes
+    Private idVenta As Integer
     Public Sub New()
-
+        InitializeComponent()
     End Sub
-    Public Sub New(cliente As Clientes)
-
+    Public Sub New(cliente As Clientes, id As Integer)
+        InitializeComponent()
+        Me.cliente = cliente
+        Me.idVenta = id
     End Sub
 
     Private Sub FrmAltaVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CargarDataGridCorreos()
+        If cliente Is Nothing Then
+            CargarDataGridCorreos()
+        Else
+            DataGridProducto.Columns.Clear()
+            CargarDataGridCorreoConCliente(cliente)
+            Dim dao = VentasDao.ObjetoAcceso()
+            Dim dataTable As DataTable = dao.GetProductosDeUnaVenta(DataGridProducto, Me.idVenta)
+            LimpiarFiltros.Visible = False
+            txtId.Text = Me.cliente.id
+        End If
+
         CargarComboboxProductos()
+
+
         txtId.Enabled = False
         txtCorreo.Enabled = False
         txtId.Visible = False
@@ -22,6 +38,13 @@ Public Class FrmAltaVenta
         DataGridProducto.AllowUserToAddRows = False
 
 
+    End Sub
+
+    Public Sub CargarDataGridCorreoConCliente(cliente As Clientes)
+        Dim fila As DataGridViewRow = New DataGridViewRow()
+        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cliente.id})
+        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cliente.correo})
+        DataGridCorreos.Rows.Add(fila)
     End Sub
 
     Public Sub CargarDataGridCorreos()
@@ -41,7 +64,7 @@ Public Class FrmAltaVenta
 
             For Each f As DataGridViewRow In DataGridCorreos.Rows
                 f.Selected = False
-                f.DefaultCellStyle.BackColor = DataGridCorreos.DefaultCellStyle.BackColor ' Restablece el color de fondo al predeterminado
+                f.DefaultCellStyle.BackColor = DataGridCorreos.DefaultCellStyle.BackColor
             Next
             DataGridCorreos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
             DataGridCorreos.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Orange
@@ -80,9 +103,9 @@ Public Class FrmAltaVenta
         Dim producto As Productos = cbProductos_SelectedIndexChanged(cbProductos, EventArgs.Empty)
 
         For Each fila As DataGridViewRow In DataGridProducto.Rows
-            If fila.Cells("ColumnaNombre").Value <> Nothing Then
-                If fila.Cells("ColumnaNombre").Value = producto.nombre Then
-                    fila.Cells("ColumnaCant").Value += cantidad.Value
+            If fila.Cells("Nombre").Value <> Nothing Then
+                If fila.Cells("Nombre").Value = producto.nombre Then
+                    fila.Cells("Cant").Value += cantidad.Value
                     Return
                 End If
             Else
@@ -97,16 +120,37 @@ Public Class FrmAltaVenta
     End Sub
 
     Public Sub CargarDataGridProductos(producto As Productos, cantidad As Integer)
-        Dim fila As DataGridViewRow = New DataGridViewRow()
-        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.id})
-        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.nombre})
-        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.precio})
-        fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cantidad})
-        DataGridProducto.Rows.Add(fila)
+        If Me.cliente Is Nothing Then
+            Dim fila As DataGridViewRow = New DataGridViewRow()
+            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.id})
+            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.nombre})
+            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.precio})
+            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cantidad})
+            DataGridProducto.Rows.Add(fila)
+
+        Else
+            Dim dataTableProductos As DataTable = DirectCast(DataGridProducto.DataSource, DataTable)
+
+            ' Crear una nueva fila y asignar valores
+            Dim nuevaFila As DataRow = dataTableProductos.NewRow()
+            nuevaFila("ID") = producto.id
+            nuevaFila("Nombre") = producto.nombre
+            nuevaFila("Precio") = producto.precio
+            nuevaFila("Cant") = cantidad
+
+            ' Agregar la nueva fila al DataTable
+            dataTableProductos.Rows.Add(nuevaFila)
+        End If
+
+
+
+
     End Sub
 
     Private Sub LimpiarFiltros_Click(sender As Object, e As EventArgs) Handles LimpiarFiltros.Click
         DataGridProducto.Rows.Clear()
+        txtCorreo.Text = String.Empty
+        txtId.Text = String.Empty
     End Sub
 
     Private Sub btnCrearVenta_Click(sender As Object, e As EventArgs) Handles btnCrearVenta.Click
@@ -116,8 +160,15 @@ Public Class FrmAltaVenta
         venta.idCliente = Convert.ToInt32(txtId.Text)
         venta.fecha = New DateTime().Now()
         venta.total = CalcularTotal()
-        Dim idVenta = dao.Add(venta)
+        Dim idVenta As Integer
         MessageBox.Show(idVenta)
+
+        If Me.cliente Is Nothing Then
+            idVenta = dao.Add(venta)
+        Else
+            idVenta = dao.Update(venta)
+            dao.DeleteProductosDeUnaVenta(Me.idVenta)
+        End If
 
         InsertarProductosDeUnaVenta(dao, idVenta)
 
@@ -134,7 +185,7 @@ Public Class FrmAltaVenta
     Private Function CalcularTotal() As Decimal
         Dim precioTotal As Decimal = 0
         For Each fila As DataGridViewRow In DataGridProducto.Rows
-            precioTotal += Convert.ToInt32(fila.Cells("ColumnaPrecio").Value) * Convert.ToInt32(fila.Cells("ColumnaCant").Value)
+            precioTotal += Convert.ToInt32(fila.Cells("Precio").Value) * Convert.ToInt32(fila.Cells("Cant").Value)
         Next
 
         Return precioTotal
@@ -142,7 +193,7 @@ Public Class FrmAltaVenta
 
     Private Function CalcularTotalDeUnProducto(fila As DataGridViewRow) As Decimal
         Dim precioTotal As Decimal = 0
-        precioTotal += Convert.ToInt32(fila.Cells("ColumnaPrecio").Value) * Convert.ToInt32(fila.Cells("ColumnaCant").Value)
+        precioTotal += Convert.ToInt32(fila.Cells("Precio").Value) * Convert.ToInt32(fila.Cells("Cant").Value)
         Return precioTotal
     End Function
 
@@ -153,10 +204,9 @@ Public Class FrmAltaVenta
             Using transaction As SqlTransaction = conexion.BeginTransaction()
                 Try
                     For Each fila As DataGridViewRow In DataGridProducto.Rows
-                        Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ColumnID").Value)
-                        Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("ColumnaPrecio").Value)
-                        Dim cantidad As Integer = Convert.ToInt32(fila.Cells("ColumnaCant").Value)
-                        Dim idCliente As Integer = Convert.ToInt32(txtId.Text)
+                        Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ID").Value)
+                        Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("Precio").Value)
+                        Dim cantidad As Integer = Convert.ToInt32(fila.Cells("Cant").Value)
                         Dim precioTotalVI = CalcularTotalDeUnProducto(fila)
                         dao.AddVentasItems(transaction, idVenta, idProducto, precioUnitario, cantidad, precioTotalVI)
                     Next
@@ -170,4 +220,16 @@ Public Class FrmAltaVenta
             End Using
         End If
     End Function
+
+    Private Sub DataGridProducto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellClick
+        If e.RowIndex >= 0 Then
+            Dim indice = DataGridProducto.Rows(e.RowIndex).Index
+            Dim formCartel = New FrmCartel()
+            Dim result As DialogResult = formCartel.ShowDialog()
+            If result = DialogResult.OK Then
+                DataGridProducto.Rows.RemoveAt(indice)
+            End If
+
+        End If
+    End Sub
 End Class

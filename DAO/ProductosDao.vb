@@ -1,5 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports entidades
+Imports System.Configuration
+
 Public Class ProductosDao
     Private cadenaConexion As String
     Private comando As SqlCommand
@@ -7,7 +9,7 @@ Public Class ProductosDao
     Private Shared ObjetoDao
 
     Private Sub New()
-        cadenaConexion = $"Data Source=.;Initial Catalog=pruebademo;Integrated Security=true"
+        cadenaConexion = ConfigurationManager.ConnectionStrings("MiConexion").ConnectionString
         comando = New SqlCommand()
         conexion = New SqlConnection(cadenaConexion)
         comando.CommandType = System.Data.CommandType.Text

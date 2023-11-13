@@ -23,9 +23,12 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmVentas))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.txtIdCliente = New System.Windows.Forms.TextBox()
+        Me.txtIdVenta = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridVentas = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -35,7 +38,9 @@ Partial Class FrmVentas
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.btnCrear = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.txtId = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -45,6 +50,8 @@ Partial Class FrmVentas
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.btnSalir)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -64,7 +71,8 @@ Partial Class FrmVentas
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.txtId)
+        Me.TabPage1.Controls.Add(Me.txtIdCliente)
+        Me.TabPage1.Controls.Add(Me.txtIdVenta)
         Me.TabPage1.Controls.Add(Me.TableLayoutPanel1)
         Me.TabPage1.Controls.Add(Me.Label5)
         Me.TabPage1.Controls.Add(Me.txtFiltrar)
@@ -79,6 +87,20 @@ Partial Class FrmVentas
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Acciones"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'txtIdCliente
+        '
+        Me.txtIdCliente.Location = New System.Drawing.Point(22, 228)
+        Me.txtIdCliente.Name = "txtIdCliente"
+        Me.txtIdCliente.Size = New System.Drawing.Size(49, 20)
+        Me.txtIdCliente.TabIndex = 37
+        '
+        'txtIdVenta
+        '
+        Me.txtIdVenta.Location = New System.Drawing.Point(22, 264)
+        Me.txtIdVenta.Name = "txtIdVenta"
+        Me.txtIdVenta.Size = New System.Drawing.Size(49, 20)
+        Me.txtIdVenta.TabIndex = 36
         '
         'TableLayoutPanel1
         '
@@ -181,12 +203,26 @@ Partial Class FrmVentas
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'txtId
+        'btnSalir
         '
-        Me.txtId.Location = New System.Drawing.Point(22, 264)
-        Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(49, 20)
-        Me.txtId.TabIndex = 36
+        Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
+        Me.btnSalir.FlatAppearance.BorderSize = 0
+        Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSalir.Location = New System.Drawing.Point(743, 12)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(32, 33)
+        Me.btnSalir.TabIndex = 3
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.25!)
+        Me.Label1.Location = New System.Drawing.Point(12, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(168, 25)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Seccion: Ventas"
         '
         'FrmVentas
         '
@@ -196,7 +232,10 @@ Partial Class FrmVentas
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "FrmVentas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmVentas"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -218,5 +257,8 @@ Partial Class FrmVentas
     Friend WithEvents btnCrear As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridVentas As DataGridView
-    Friend WithEvents txtId As TextBox
+    Friend WithEvents txtIdVenta As TextBox
+    Friend WithEvents txtIdCliente As TextBox
+    Friend WithEvents btnSalir As Button
+    Friend WithEvents Label1 As Label
 End Class

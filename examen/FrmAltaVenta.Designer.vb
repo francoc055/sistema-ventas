@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAltaVenta
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmAltaVenta
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -35,15 +35,15 @@ Partial Class FrmAltaVenta
         Me.cbProductos = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridProducto = New System.Windows.Forms.DataGridView()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cant = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnCargarProducto = New System.Windows.Forms.Button()
         Me.LimpiarFiltros = New System.Windows.Forms.Button()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtCorreo = New System.Windows.Forms.TextBox()
         Me.btnCrearVenta = New System.Windows.Forms.Button()
-        Me.ColumnID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaNombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaPrecio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnaCant = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.DataGridCorreos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cantidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,7 +61,7 @@ Partial Class FrmAltaVenta
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 261.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(157, 234)
         Me.TableLayoutPanel2.TabIndex = 29
         '
@@ -107,7 +107,7 @@ Partial Class FrmAltaVenta
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(352, 5)
+        Me.Label2.Location = New System.Drawing.Point(379, 5)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 45
@@ -116,7 +116,7 @@ Partial Class FrmAltaVenta
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(229, 5)
+        Me.Label1.Location = New System.Drawing.Point(256, 4)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 44
@@ -124,7 +124,7 @@ Partial Class FrmAltaVenta
         '
         'cantidad
         '
-        Me.cantidad.Location = New System.Drawing.Point(338, 21)
+        Me.cantidad.Location = New System.Drawing.Point(368, 21)
         Me.cantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.cantidad.Name = "cantidad"
         Me.cantidad.Size = New System.Drawing.Size(78, 20)
@@ -134,9 +134,9 @@ Partial Class FrmAltaVenta
         'cbProductos
         '
         Me.cbProductos.FormattingEnabled = True
-        Me.cbProductos.Location = New System.Drawing.Point(192, 21)
+        Me.cbProductos.Location = New System.Drawing.Point(235, 20)
         Me.cbProductos.Name = "cbProductos"
-        Me.cbProductos.Size = New System.Drawing.Size(121, 21)
+        Me.cbProductos.Size = New System.Drawing.Size(105, 21)
         Me.cbProductos.TabIndex = 42
         '
         'TableLayoutPanel3
@@ -149,7 +149,7 @@ Partial Class FrmAltaVenta
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 188.0!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 207.0!))
         Me.TableLayoutPanel3.Size = New System.Drawing.Size(214, 207)
         Me.TableLayoutPanel3.TabIndex = 41
         '
@@ -168,19 +168,47 @@ Partial Class FrmAltaVenta
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridProducto.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridProducto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ColumnID, Me.ColumnaNombre, Me.ColumnaPrecio, Me.ColumnaCant})
+        Me.DataGridProducto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Nombre, Me.Precio, Me.Cant})
         Me.DataGridProducto.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridProducto.EnableHeadersVisualStyles = False
         Me.DataGridProducto.Location = New System.Drawing.Point(3, 3)
         Me.DataGridProducto.Name = "DataGridProducto"
         Me.DataGridProducto.ReadOnly = True
         Me.DataGridProducto.RowHeadersVisible = False
+        Me.DataGridProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridProducto.Size = New System.Drawing.Size(208, 201)
         Me.DataGridProducto.TabIndex = 0
         '
+        'ID
+        '
+        Me.ID.FillWeight = 45.68528!
+        Me.ID.HeaderText = "ID"
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        '
+        'Nombre
+        '
+        Me.Nombre.FillWeight = 195.9124!
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        '
+        'Precio
+        '
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        '
+        'Cant
+        '
+        Me.Cant.FillWeight = 58.40231!
+        Me.Cant.HeaderText = "Cant"
+        Me.Cant.Name = "Cant"
+        Me.Cant.ReadOnly = True
+        '
         'btnCargarProducto
         '
-        Me.btnCargarProducto.Location = New System.Drawing.Point(259, 259)
+        Me.btnCargarProducto.Location = New System.Drawing.Point(287, 258)
         Me.btnCargarProducto.Name = "btnCargarProducto"
         Me.btnCargarProducto.Size = New System.Drawing.Size(91, 23)
         Me.btnCargarProducto.TabIndex = 46
@@ -190,7 +218,7 @@ Partial Class FrmAltaVenta
         'LimpiarFiltros
         '
         Me.LimpiarFiltros.BackgroundImage = CType(resources.GetObject("LimpiarFiltros.BackgroundImage"), System.Drawing.Image)
-        Me.LimpiarFiltros.Location = New System.Drawing.Point(449, 216)
+        Me.LimpiarFiltros.Location = New System.Drawing.Point(184, 134)
         Me.LimpiarFiltros.Name = "LimpiarFiltros"
         Me.LimpiarFiltros.Size = New System.Drawing.Size(32, 36)
         Me.LimpiarFiltros.TabIndex = 47
@@ -221,33 +249,6 @@ Partial Class FrmAltaVenta
         Me.btnCrearVenta.TabIndex = 50
         Me.btnCrearVenta.UseVisualStyleBackColor = True
         '
-        'ColumnID
-        '
-        Me.ColumnID.FillWeight = 45.68528!
-        Me.ColumnID.HeaderText = "ID"
-        Me.ColumnID.Name = "ColumnID"
-        Me.ColumnID.ReadOnly = True
-        '
-        'ColumnaNombre
-        '
-        Me.ColumnaNombre.FillWeight = 195.9124!
-        Me.ColumnaNombre.HeaderText = "Nombre"
-        Me.ColumnaNombre.Name = "ColumnaNombre"
-        Me.ColumnaNombre.ReadOnly = True
-        '
-        'ColumnaPrecio
-        '
-        Me.ColumnaPrecio.HeaderText = "Precio"
-        Me.ColumnaPrecio.Name = "ColumnaPrecio"
-        Me.ColumnaPrecio.ReadOnly = True
-        '
-        'ColumnaCant
-        '
-        Me.ColumnaCant.FillWeight = 58.40231!
-        Me.ColumnaCant.HeaderText = "Cant"
-        Me.ColumnaCant.Name = "ColumnaCant"
-        Me.ColumnaCant.ReadOnly = True
-        '
         'FrmAltaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -265,6 +266,7 @@ Partial Class FrmAltaVenta
         Me.Controls.Add(Me.TableLayoutPanel3)
         Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Name = "FrmAltaVenta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAltaVenta"
         Me.TableLayoutPanel2.ResumeLayout(False)
         CType(Me.DataGridCorreos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -291,8 +293,8 @@ Partial Class FrmAltaVenta
     Friend WithEvents txtId As TextBox
     Friend WithEvents txtCorreo As TextBox
     Friend WithEvents btnCrearVenta As Button
-    Friend WithEvents ColumnID As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaNombre As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaPrecio As DataGridViewTextBoxColumn
-    Friend WithEvents ColumnaCant As DataGridViewTextBoxColumn
+    Friend WithEvents ID As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Precio As DataGridViewTextBoxColumn
+    Friend WithEvents Cant As DataGridViewTextBoxColumn
 End Class

@@ -1,5 +1,6 @@
 ﻿Imports entidades
 Imports System.Data.SqlClient
+Imports System.Configuration
 
 Public Class VentasDao
     Private cadenaConexion As String
@@ -8,7 +9,7 @@ Public Class VentasDao
     Private Shared ObjetoDao
 
     Private Sub New()
-        cadenaConexion = $"Data Source=.;Initial Catalog=pruebademo;Integrated Security=true"
+        cadenaConexion = ConfigurationManager.ConnectionStrings("MiConexion").ConnectionString
         comando = New SqlCommand()
         conexion = New SqlConnection(cadenaConexion)
         comando.CommandType = System.Data.CommandType.Text
@@ -33,7 +34,6 @@ Public Class VentasDao
 
             comando.ExecuteNonQuery()
 
-            'comando.ExecuteNonQuery()
             comando.CommandText = "SELECT IDENT_CURRENT('ventas')"
             Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
             Return ultimoId
@@ -50,6 +50,7 @@ Public Class VentasDao
     Public Function GetAll() As List(Of Ventas)
         Dim listaVentas As New List(Of Ventas)
         Try
+            comando.Parameters.Clear()
             conexion.Open()
             comando.CommandText = $"select * from ventas"
             Using dataReader As SqlDataReader = comando.ExecuteReader()
@@ -113,7 +114,9 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@id", venta.id)
 
             comando.ExecuteNonQuery()
-            Console.WriteLine("venta modificado")
+            comando.CommandText = "SELECT IDENT_CURRENT('ventas')"
+            Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
+            Return ultimoId
 
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
@@ -154,10 +157,12 @@ Public Class VentasDao
         End Set
     End Property
 
+
+    '--------------------------------ventasitems-------------------------------'
     Public Function AddVentasItems(transaction As SqlTransaction, idVenta As Integer, idProducto As Integer, precioUnitario As Decimal, cantidad As Integer, precioTotal As Decimal)
         Try
             comando.Parameters.Clear()
-            'conexion.Open()
+            comando.Transaction = transaction
             comando.CommandText = $"insert into ventasitems (IDVenta, IDProducto, PrecioUnitario, Cantidad, PrecioTotal) values
                                     (@IDVenta, @IDProducto, @PrecioUnitario, @Cantidad, @PrecioTotal)"
             comando.Parameters.AddWithValue("@IDVenta", idVenta)
@@ -165,7 +170,6 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@PrecioUnitario", precioUnitario)
             comando.Parameters.AddWithValue("@Cantidad", cantidad)
             comando.Parameters.AddWithValue("@PrecioTotal", precioTotal)
-            comando.Transaction = transaction
 
             comando.ExecuteNonQuery()
 
@@ -175,4 +179,58 @@ Public Class VentasDao
         End Try
     End Function
 
+
+    Public Function GetProductosDeUnaVenta(dataGridProductos, idVenta)
+        Dim tablaProductos As New DataTable("ProductosDeUnaVenta")
+
+        Try
+            comando.Parameters.Clear()
+            conexion.Open()
+            comando.CommandText = "SELECT productos.ID, productos.Nombre, productos.Precio, ventasitems.Cantidad as Cant
+                                    FROM productos 
+                                    JOIN ventasitems ON productos.ID = ventasitems.IDProducto
+                                    JOIN ventas ON ventasitems.IDVenta = ventas.ID
+                                    WHERE ventas.ID = @idVenta;"
+
+            comando.Parameters.AddWithValue("@idVenta", idVenta)
+
+            ' Asigna la consulta al adaptador
+            Dim adaptador As New SqlDataAdapter(comando)
+
+            ' Llena el DataTable con los datos
+            adaptador.Fill(tablaProductos)
+
+            ' Asigna el DataTable al DataGridView
+            dataGridProductos.DataSource = tablaProductos
+
+            Return tablaProductos
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString())
+        Finally
+            conexion.Close()
+        End Try
+
+        ' En caso de error, o si no se pudo llenar el DataTable, devuelve un DataTable vacío
+        Return New DataTable()
+
+    End Function
+
+    Public Function DeleteProductosDeUnaVenta(idVenta As Integer)
+       Try
+            comando.Parameters.Clear()
+            conexion.Open()
+            comando.CommandText = "delete from ventasitems where IDventa = @idVenta;"
+            comando.Parameters.AddWithValue("@idVenta", idVenta)
+            comando.ExecuteNonQuery()
+
+
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString())
+        Finally
+            conexion.Close()
+        End Try
+
+    End Function
+
 End Class
+

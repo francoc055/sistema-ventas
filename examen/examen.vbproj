@@ -82,6 +82,12 @@
     <Compile Include="FrmAltaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmCartel.Designer.vb">
+      <DependentUpon>FrmCartel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCartel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmClientes.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmAltaVenta.resx">
       <DependentUpon>FrmAltaVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCartel.resx">
+      <DependentUpon>FrmCartel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>

@@ -109,6 +109,7 @@ Partial Class FrmInicio
         Me.Controls.Add(Me.btnProductos)
         Me.Controls.Add(Me.btnClientes)
         Me.Name = "FrmInicio"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmInicio"
         Me.ResumeLayout(False)
         Me.PerformLayout()

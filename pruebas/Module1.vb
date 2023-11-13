@@ -7,7 +7,9 @@ Module Module1
     Sub Main()
 
 
-        Dim objeto = ClientesDao.ObjetoAcceso()
+        Dim dao = VentasDao.ObjetoAcceso()
+
+        dao.AddVentasItems2(1, 2, 100, 1, 100)
 
         'INSERT
         'Dim cliente As Clientes = New Clientes()
