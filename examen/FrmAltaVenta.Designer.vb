@@ -133,6 +133,7 @@ Partial Class FrmAltaVenta
         '
         'cbProductos
         '
+        Me.cbProductos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbProductos.FormattingEnabled = True
         Me.cbProductos.Location = New System.Drawing.Point(235, 20)
         Me.cbProductos.Name = "cbProductos"

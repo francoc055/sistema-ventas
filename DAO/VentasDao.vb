@@ -16,6 +16,11 @@ Public Class VentasDao
         comando.Connection = conexion
     End Sub
 
+    ''' <summary>
+    ''' Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+    ''' caso contrario creo un nuevo objeto
+    ''' </summary>
+    ''' <returns>retorna un objeto de acceso a datos</returns>
     Public Shared Function ObjetoAcceso() As VentasDao
         If ObjetoDao Is Nothing Then
             ObjetoDao = New VentasDao()
@@ -23,6 +28,11 @@ Public Class VentasDao
         Return ObjetoDao
     End Function
 
+    ''' <summary>
+    ''' realizo query que agrega un objeto venta a la base de datos
+    ''' </summary>
+    ''' <param name="venta">objeto venta</param>
+    ''' <returns>ultimo id insertado</returns>
     Public Function Add(venta As Ventas)
         Try
             comando.Parameters.Clear()
@@ -46,7 +56,10 @@ Public Class VentasDao
 
     End Function
 
-
+    ''' <summary>
+    ''' realizo query para la obtencion de una lista de ventas de la base de datos
+    ''' </summary>
+    ''' <returns>lista de ventas</returns>
     Public Function GetAll() As List(Of Ventas)
         Dim listaVentas As New List(Of Ventas)
         Try
@@ -74,31 +87,12 @@ Public Class VentasDao
         Return Nothing
     End Function
 
-    Public Function GetById(id As Integer) As Ventas
 
-        Dim venta As New Ventas()
-        Try
-            comando.Parameters.Clear()
-            conexion.Open()
-            comando.CommandText = $"select * from ventas where ID = @id"
-            comando.Parameters.AddWithValue("@id", id)
-            Using dataReader As SqlDataReader = comando.ExecuteReader()
-                While dataReader.Read()
-                    venta.id = Convert.ToInt32(dataReader("ID"))
-                    venta.idCliente = dataReader("IDCliente").ToString()
-                    venta.fecha = dataReader("Fecha")
-                    venta.total = Convert.ToDecimal(dataReader("total"))
-                End While
-
-                Return venta
-            End Using
-        Catch ex As Exception
-            Console.WriteLine(ex.ToString())
-        Finally
-            conexion.Close()
-        End Try
-    End Function
-
+    ''' <summary>
+    ''' realizo query para actualizar los campos de un objeto venta en la base de datos
+    ''' </summary>
+    ''' <param name="venta">objeto venta</param>
+    ''' <returns>id del objeto actualizado</returns>
     Public Function Update(venta As Ventas)
         Try
             comando.Parameters.Clear()
@@ -125,7 +119,12 @@ Public Class VentasDao
         End Try
     End Function
 
-    Public Function Delete(id As Integer)
+
+    ''' <summary>
+    ''' realizo query para la eliminacion de una venta y sus productos asociados en la base de datos
+    ''' </summary>
+    ''' <param name="id">id del objeto venta</param>
+    Public Sub Delete(id As Integer)
         comando.Parameters.Clear()
         conexion.Open()
         Using transaction As SqlTransaction = conexion.BeginTransaction
@@ -145,43 +144,54 @@ Public Class VentasDao
             End Try
         End Using
 
-    End Function
+    End Sub
 
-
-    Public Property connection As SqlConnection
-        Get
-            Return conexion
-        End Get
-        Set(value As SqlConnection)
-            conexion = value
-        End Set
-    End Property
 
 
     '--------------------------------ventasitems-------------------------------'
-    Public Function AddVentasItems(transaction As SqlTransaction, idVenta As Integer, idProducto As Integer, precioUnitario As Decimal, cantidad As Integer, precioTotal As Decimal)
-        Try
-            comando.Parameters.Clear()
-            comando.Transaction = transaction
-            comando.CommandText = $"insert into ventasitems (IDVenta, IDProducto, PrecioUnitario, Cantidad, PrecioTotal) values
-                                    (@IDVenta, @IDProducto, @PrecioUnitario, @Cantidad, @PrecioTotal)"
-            comando.Parameters.AddWithValue("@IDVenta", idVenta)
-            comando.Parameters.AddWithValue("@IDProducto", idProducto)
-            comando.Parameters.AddWithValue("@PrecioUnitario", precioUnitario)
-            comando.Parameters.AddWithValue("@Cantidad", cantidad)
-            comando.Parameters.AddWithValue("@PrecioTotal", precioTotal)
 
-            comando.ExecuteNonQuery()
+    ''' <summary>
+    ''' realizo query para la insercion de productos de una venta
+    ''' </summary>
+    ''' <param name="data">objeto dataTable</param>
+    Public Sub AddVentasItems2(data As DataTable)
+        comando.Parameters.Clear()
+        conexion.Open()
+        Using transaction As SqlTransaction = conexion.BeginTransaction()
+            Try
+                Dim adaptador As New SqlDataAdapter(comando)
 
+                adaptador.SelectCommand = New SqlCommand("SELECT * FROM ventasitems", conexion)
+                adaptador.InsertCommand = New SqlCommand("INSERT INTO ventasitems (IDVenta, IDProducto, PrecioUnitario, Cantidad, PrecioTotal) VALUES (@IDVenta, @IDProducto, @PrecioUnitario, @Cantidad, @PrecioTotal)", conexion)
+                adaptador.InsertCommand.Parameters.Add("@IDVenta", SqlDbType.Int, 0, "IDVenta")
+                adaptador.InsertCommand.Parameters.Add("@IDProducto", SqlDbType.Int, 0, "IDProducto")
+                adaptador.InsertCommand.Parameters.Add("@PrecioUnitario", SqlDbType.Decimal, 0, "PrecioUnitario")
+                adaptador.InsertCommand.Parameters.Add("@Cantidad", SqlDbType.Int, 0, "Cantidad")
+                adaptador.InsertCommand.Parameters.Add("@PrecioTotal", SqlDbType.Decimal, 0, "PrecioTotal")
 
-        Catch e As Exception
-            Console.WriteLine(e.ToString())
-        End Try
-    End Function
+                adaptador.InsertCommand.Transaction = transaction
 
+                adaptador.Update(data)
+                transaction.Commit()
 
+            Catch ex As Exception
+                transaction.Rollback()
+                Console.WriteLine(ex.ToString())
+            Finally
+                conexion.Close()
+
+            End Try
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' realizo query para la obtencion de productos que tiene una venta
+    ''' </summary>
+    ''' <param name="dataGridProductos">objeto datagrid</param>
+    ''' <param name="idVenta">id de objeto venta</param>
+    ''' <returns>un datatable</returns>
     Public Function GetProductosDeUnaVenta(dataGridProductos, idVenta)
-        Dim tablaProductos As New DataTable("ProductosDeUnaVenta")
+        Dim tablaProductos As New DataTable()
 
         Try
             comando.Parameters.Clear()
@@ -215,8 +225,12 @@ Public Class VentasDao
 
     End Function
 
-    Public Function DeleteProductosDeUnaVenta(idVenta As Integer)
-       Try
+    ''' <summary>
+    ''' realizo query para la eliminacion de productos asociados a una venta
+    ''' </summary>
+    ''' <param name="idVenta">id de objeto venta</param>
+    Public Sub DeleteProductosDeUnaVenta(idVenta As Integer)
+        Try
             comando.Parameters.Clear()
             conexion.Open()
             comando.CommandText = "delete from ventasitems where IDventa = @idVenta;"
@@ -230,7 +244,91 @@ Public Class VentasDao
             conexion.Close()
         End Try
 
+    End Sub
+
+    ''' <summary>
+    ''' realizo query para la obtencion de todos los datos asociados a una venta
+    ''' </summary>
+    ''' <param name="datagridDatosVentas">objeto datagrid</param>
+    ''' <param name="idCliente">id de objeto cliente</param>
+    ''' <returns>de dataTable</returns>
+    Public Function GetDatosVentas(datagridDatosVentas, idCliente)
+        Dim tablaDatosVentas As New DataTable()
+
+        Try
+            comando.Parameters.Clear()
+            conexion.Open()
+            comando.CommandText = "SELECT ventas.ID as numeroDeVenta, clientes.Cliente, clientes.Telefono, clientes.Correo, productos.Nombre, productos.Precio, productos.Categoria, ventasitems.Cantidad as Cant, ventasitems.PrecioTotal
+                                    FROM productos 
+                                    JOIN ventasitems ON productos.ID = ventasitems.IDProducto
+                                    JOIN ventas ON ventasitems.IDVenta = ventas.ID
+                                    join clientes on ventas.IDCliente = clientes.ID
+                                    WHERE ventas.IDCliente = @idCliente order by ventasitems.ID;"
+
+            comando.Parameters.AddWithValue("@idCliente", idCliente)
+
+            Dim adaptador As New SqlDataAdapter(comando)
+
+            adaptador.Fill(tablaDatosVentas)
+
+            datagridDatosVentas.DataSource = tablaDatosVentas
+
+            Return tablaDatosVentas
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString())
+        Finally
+            conexion.Close()
+        End Try
+
+        Return New DataTable()
     End Function
 
+    ''' <summary>
+    ''' realizo query para la obtencion de productos vendidos con sus datos en un mes determinado
+    ''' </summary>
+    ''' <param name="datagridProductosMensuales">objeto data grid</param>
+    ''' <param name="fechaMin">fecha minima</param>
+    ''' <param name="fechaMax">fecha maxima</param>
+    ''' <returns>de dataTable</returns>
+    Public Function GetProductosMensuales(datagridProductosMensuales, fechaMin, fechaMax)
+        Dim tablaProductosMensuales As New DataTable()
+        Try
+            comando.Parameters.Clear()
+            conexion.Open()
+            comando.CommandText = "SELECT
+                                        productos.Nombre,
+                                        SUM(ventasitems.Cantidad) as TotalCantidad,
+                                        productos.Precio,
+                                        productos.Categoria,
+                                        SUM(ventasitems.PrecioTotal) as TotalPrecio
+                                    FROM
+                                        productos 
+                                    JOIN
+                                        ventasitems ON productos.ID = ventasitems.IDProducto
+                                    JOIN
+                                        ventas ON ventasitems.IDVenta = ventas.ID
+                                    WHERE
+                                        ventas.Fecha >= @fechaMin AND ventas.Fecha <= @fechaMax
+                                    GROUP BY
+                                        productos.Nombre, productos.Precio, productos.Categoria;"
+
+            comando.Parameters.AddWithValue("@fechaMin", fechaMin)
+            comando.Parameters.AddWithValue("@fechaMax", fechaMax)
+
+            Dim adaptador As New SqlDataAdapter(comando)
+
+            adaptador.Fill(tablaProductosMensuales)
+
+            datagridProductosMensuales.DataSource = tablaProductosMensuales
+
+            Return tablaProductosMensuales
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString())
+        Finally
+            conexion.Close()
+        End Try
+
+        Return New DataTable()
+    End Function
 End Class
 

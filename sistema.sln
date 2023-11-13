@@ -11,6 +11,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "entidades", "entidades\enti
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DAO", "DAO\DAO.vbproj", "{D40729AC-1329-4D8F-B7FE-17571BE2D6EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db", "db", "{0D7F7347-567A-44DD-B82D-23563E938F03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "models", "models", "{421B8225-D099-4D7F-B2E2-2F653E070E1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "views", "views", "{05CE196C-FF4F-4002-8B38-3225157DD1C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +42,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBFFE731-E108-4D48-A166-D9E9DCF06ADB} = {05CE196C-FF4F-4002-8B38-3225157DD1C8}
+		{CCCC9822-687F-4103-AD41-7568FF227439} = {421B8225-D099-4D7F-B2E2-2F653E070E1B}
+		{D40729AC-1329-4D8F-B7FE-17571BE2D6EE} = {0D7F7347-567A-44DD-B82D-23563E938F03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {736650F9-49A2-4371-B9C2-A8E8DC5A25BA}

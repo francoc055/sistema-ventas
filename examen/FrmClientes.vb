@@ -22,9 +22,16 @@ Public Class FrmClientes
         Dim telefono As String = txtTelefono.Text
         Dim correo As String = txtCorreo.Text
 
-        If (String.IsNullOrEmpty(nombre) Or String.IsNullOrEmpty(telefono) Or String.IsNullOrEmpty(correo)) Or
+        If (String.IsNullOrEmpty(nombre) Or String.IsNullOrEmpty(telefono) Or Not EsCorreoElectronicoValido(correo)) Or
             Not IsNumeric(telefono) Then
             MessageBox.Show("error")
+            Return
+        End If
+
+        Dim dao = ClientesDao.ObjetoAcceso()
+        Dim listaClientes = dao.GetAll()
+        If Clientes.VerificarClienteExistente(listaClientes, correo) Then
+            MessageBox.Show("error. cliente existente")
             Return
         End If
 
@@ -35,7 +42,6 @@ Public Class FrmClientes
         nuevoCliente.telefono = telefono
         nuevoCliente.correo = correo
 
-        Dim dao = ClientesDao.ObjetoAcceso()
         dao.Add(nuevoCliente)
         LimpiarGroupBox()
         CargarDataGrid()
@@ -52,6 +58,19 @@ Public Class FrmClientes
             End If
         Next
     End Sub
+
+    Function EsCorreoElectronicoValido(correo As String) As Boolean
+        If String.IsNullOrEmpty(correo) Then
+            Return False
+        End If
+
+        Dim indiceArroba As Integer = correo.IndexOf("@")
+        If indiceArroba = -1 Or indiceArroba = 0 Or indiceArroba = correo.Length - 1 Then
+            Return False
+        End If
+
+        Return True
+    End Function
 
     'cuando hago click en una celda verifico el indice y lo cargo en los textBox
     Private Sub DataGridClientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellClick

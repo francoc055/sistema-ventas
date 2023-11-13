@@ -16,6 +16,12 @@ Public Class ClientesDao
         comando.Connection = conexion
     End Sub
 
+
+    ''' <summary>
+    ''' Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+    ''' caso contrario creo un nuevo objeto
+    ''' </summary>
+    ''' <returns>retorna un objeto de acceso a datos</returns>
     Public Shared Function ObjetoAcceso() As ClientesDao
         If ObjetoDao Is Nothing Then
             ObjetoDao = New ClientesDao()
@@ -23,7 +29,13 @@ Public Class ClientesDao
         Return ObjetoDao
     End Function
 
-    Public Function Add(cliente As Clientes)
+
+
+    ''' <summary>
+    ''' realizo query que agrega un objeto cliente a la base de datos
+    ''' </summary>
+    ''' <param name="cliente">objeto cliente</param>
+    Public Sub Add(cliente As Clientes)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -42,9 +54,12 @@ Public Class ClientesDao
             conexion.Close()
         End Try
 
-    End Function
+    End Sub
 
-
+    ''' <summary>
+    ''' realizo query para la obtencion de una lista de clientes de la base de datos
+    ''' </summary>
+    ''' <returns>retorno lista de clientes </returns>
     Public Function GetAll() As List(Of Clientes)
         Dim listaClientes As New List(Of Clientes)
         Try
@@ -69,6 +84,11 @@ Public Class ClientesDao
         End Try
     End Function
 
+    ''' <summary>
+    ''' realizo query para la obtecion de un objeto cliente
+    ''' </summary>
+    ''' <param name="id">campo id de un objeto cliente</param>
+    ''' <returns>retorno objeto cliente</returns>
     Public Function GetById(id As Integer) As Clientes
 
         Dim cliente As New Clientes()
@@ -94,7 +114,11 @@ Public Class ClientesDao
         End Try
     End Function
 
-    Public Function Update(cliente As Clientes)
+    ''' <summary>
+    ''' realizo query para actualizar los campos de un objeto cliente en la base de datos
+    ''' </summary>
+    ''' <param name="cliente">objeto cliente</param>
+    Public Sub Update(cliente As Clientes)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -116,9 +140,13 @@ Public Class ClientesDao
         Finally
             conexion.Close()
         End Try
-    End Function
+    End Sub
 
-    Public Function Delete(id As Integer)
+    ''' <summary>
+    ''' realizo query que elimina un cliente de la base de datos
+    ''' </summary>
+    ''' <param name="id">campo id de cliente</param>
+    Public Sub Delete(id As Integer)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -134,7 +162,7 @@ Public Class ClientesDao
         Finally
             conexion.Close()
         End Try
-    End Function
+    End Sub
 
 
 

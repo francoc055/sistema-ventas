@@ -26,14 +26,18 @@ Public Class FrmProductos
             Return
         End If
 
-
+        Dim dao = ProductosDao.ObjetoAcceso()
+        Dim listaProductos = dao.GetAll()
+        If Productos.VerificarProductoExistente(listaProductos, nombre, categoria) Then
+            MessageBox.Show("error. producto existente")
+            Return
+        End If
 
         Dim nuevoProducto As New Productos()
         nuevoProducto.nombre = nombre
         nuevoProducto.precio = Convert.ToDecimal(precio)
         nuevoProducto.categoria = categoria
 
-        Dim dao = ProductosDao.ObjetoAcceso()
         Dim ultimoID As Integer = dao.Add(nuevoProducto)
         CargarDataGrid()
         LimpiarGroupBox()

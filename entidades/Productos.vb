@@ -42,4 +42,21 @@
             _categoria = value
         End Set
     End Property
+
+    ''' <summary>
+    ''' verifica que no exista otro producto con el mismo nombre y categoria
+    ''' </summary>
+    ''' <param name="listaProductos">lista de productos existenten en la base de datos</param>
+    ''' <param name="nombre">nombre del producto a dar de alta</param>
+    ''' <param name="categoria">categoria del producto a dar de alta</param>
+    ''' <returns>retorna TRUE si existe el producto, caso contrario FALSE</returns>
+    Public Shared Function VerificarProductoExistente(listaProductos As List(Of Productos), nombre As String, categoria As String)
+        For Each productos As Productos In listaProductos
+            If productos.nombre = nombre And productos.categoria = categoria Then
+                Return True
+            End If
+        Next
+
+        Return False
+    End Function
 End Class

@@ -42,4 +42,21 @@
             _correo = value
         End Set
     End Property
+
+
+    ''' <summary>
+    ''' verifica que no exista otro cliente con el mismo correo
+    ''' </summary>
+    ''' <param name="listaClientes">lista de clientes existenten en la base de datos</param>
+    ''' <param name="correo">correo del cliente a dar de alta</param>
+    ''' <returns>retorna TRUE si existe el cliente, caso contrario FALSE</returns>
+    Public Shared Function VerificarClienteExistente(listaClientes As List(Of Clientes), correo As String)
+        For Each cliente As Clientes In listaClientes
+            If cliente.correo = correo Then
+                Return True
+            End If
+        Next
+
+        Return False
+    End Function
 End Class

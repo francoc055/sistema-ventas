@@ -16,6 +16,11 @@ Public Class ProductosDao
         comando.Connection = conexion
     End Sub
 
+    ''' <summary>
+    ''' Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+    ''' caso contrario creo un nuevo objeto
+    ''' </summary>
+    ''' <returns>retorna un objeto de acceso a datos</returns>
     Public Shared Function ObjetoAcceso() As ProductosDao
         If ObjetoDao Is Nothing Then
             ObjetoDao = New ProductosDao()
@@ -23,6 +28,11 @@ Public Class ProductosDao
         Return ObjetoDao
     End Function
 
+    ''' <summary>
+    ''' realizo query que agrega un objeto producto a la base de datos
+    ''' </summary>
+    ''' <param name="producto">ojeto producto</param>
+    ''' <returns>retorna el ultimo id insertado</returns>
     Public Function Add(producto As Productos)
         Try
             comando.Parameters.Clear()
@@ -48,7 +58,10 @@ Public Class ProductosDao
 
     End Function
 
-
+    ''' <summary>
+    ''' realizo query para la obtencion de una lista de productos de la base de datos
+    ''' </summary>
+    ''' <returns>retorno lista de productos </returns>
     Public Function GetAll() As List(Of Productos)
         Dim listaProductos As New List(Of Productos)
         Try
@@ -73,6 +86,11 @@ Public Class ProductosDao
         End Try
     End Function
 
+    ''' <summary>
+    ''' realizo query para la obtecion de un objeto producto
+    ''' </summary>
+    ''' <param name="id">campo id de un objeto producto</param>
+    ''' <returns>objeto producto</returns>
     Public Function GetById(id As Integer) As Productos
 
         Dim producto As New Productos()
@@ -98,7 +116,11 @@ Public Class ProductosDao
         End Try
     End Function
 
-    Public Function Update(producto As Productos)
+    ''' <summary>
+    ''' realizo query para actualizar los campos de un objeto producto en la base de datos
+    ''' </summary>
+    ''' <param name="producto">objeto producto</param>
+    Public Sub Update(producto As Productos)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -120,9 +142,14 @@ Public Class ProductosDao
         Finally
             conexion.Close()
         End Try
-    End Function
+    End Sub
 
-    Public Function Delete(id As Integer)
+
+    ''' <summary>
+    ''' realizo query que elimina un producto de la base de datos
+    ''' </summary>
+    ''' <param name="id">campo id de producto</param>
+    Public Sub Delete(id As Integer)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -138,8 +165,15 @@ Public Class ProductosDao
         Finally
             conexion.Close()
         End Try
-    End Function
+    End Sub
 
+
+    ''' <summary>
+    ''' realizo query para el filtrado de productos entre precios 
+    ''' </summary>
+    ''' <param name="min">orecio minimo</param>
+    ''' <param name="max">precio maximo</param>
+    ''' <returns>lista de productos</returns>
     Public Function FiltrarPorPrecio(min As Integer, max As Integer) As List(Of Productos)
         Dim listaProductos As New List(Of Productos)
         Try

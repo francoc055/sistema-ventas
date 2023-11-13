@@ -154,6 +154,10 @@ Public Class FrmAltaVenta
     End Sub
 
     Private Sub btnCrearVenta_Click(sender As Object, e As EventArgs) Handles btnCrearVenta.Click
+        If String.IsNullOrEmpty(txtId.Text) Or DataGridProducto.Rows.Count = 0 Then
+            MessageBox.Show("Error. debe seleccionar cliente y producto")
+            Return
+        End If
         Dim dao = VentasDao.ObjetoAcceso()
 
         Dim venta As Ventas = New Ventas()
@@ -177,10 +181,6 @@ Public Class FrmAltaVenta
         Me.Close()
     End Sub
 
-    'precio unitario, precio total 
-    Private Function GenerarListaId()
-
-    End Function
 
     Private Function CalcularTotal() As Decimal
         Dim precioTotal As Decimal = 0
@@ -198,26 +198,31 @@ Public Class FrmAltaVenta
     End Function
 
     Public Function InsertarProductosDeUnaVenta(dao As VentasDao, idVenta As Integer)
+        Dim data = New DataTable()
+        data.Columns.Add("IDVenta")
+        data.Columns.Add("IDProducto")
+        data.Columns.Add("PrecioUnitario")
+        data.Columns.Add("Cantidad")
+        data.Columns.Add("PrecioTotal")
+
+
         If DataGridProducto.Rows.Count > 0 And txtId.Text <> Nothing Then
-            Dim conexion = dao.connection
-            conexion.Open()
-            Using transaction As SqlTransaction = conexion.BeginTransaction()
-                Try
-                    For Each fila As DataGridViewRow In DataGridProducto.Rows
-                        Dim idProducto As Integer = Convert.ToInt32(fila.Cells("ID").Value)
-                        Dim precioUnitario As Decimal = Convert.ToDecimal(fila.Cells("Precio").Value)
-                        Dim cantidad As Integer = Convert.ToInt32(fila.Cells("Cant").Value)
-                        Dim precioTotalVI = CalcularTotalDeUnProducto(fila)
-                        dao.AddVentasItems(transaction, idVenta, idProducto, precioUnitario, cantidad, precioTotalVI)
-                    Next
-                    transaction.Commit()
-                Catch ex As Exception
-                    transaction.Rollback()
-                    MessageBox.Show(ex.ToString())
-                Finally
-                    conexion.Close()
-                End Try
-            End Using
+
+            For Each fila As DataGridViewRow In DataGridProducto.Rows
+                Dim dataRow As DataRow = data.NewRow()
+                dataRow("IDVenta") = idVenta
+                dataRow("IDProducto") = Convert.ToInt32(fila.Cells("ID").Value)
+                dataRow("PrecioUnitario") = Convert.ToDecimal(fila.Cells("Precio").Value)
+                dataRow("Cantidad") = Convert.ToInt32(fila.Cells("Cant").Value)
+                dataRow("PrecioTotal") = CalcularTotalDeUnProducto(fila)
+                data.Rows.Add(dataRow)
+
+            Next
+            If data.Rows.Count > 0 Then
+                dao.AddVentasItems2(data)
+            Else
+                MessageBox.Show("error")
+            End If
         End If
     End Function
 

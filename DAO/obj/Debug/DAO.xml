@@ -22,5 +22,160 @@ DAO
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:DAO.ClientesDao.ObjetoAcceso">
+ <summary>
+ Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+ caso contrario creo un nuevo objeto
+ </summary>
+ <returns>retorna un objeto de acceso a datos</returns>
+</member>
+<member name="M:DAO.ClientesDao.Add(entidades.Clientes)">
+ <summary>
+ realizo query que agrega un objeto cliente a la base de datos
+ </summary>
+ <param name="cliente">objeto cliente</param>
+</member>
+<member name="M:DAO.ClientesDao.GetAll">
+ <summary>
+ realizo query para la obtencion de una lista de clientes de la base de datos
+ </summary>
+ <returns>retorno lista de clientes </returns>
+</member>
+<member name="M:DAO.ClientesDao.GetById(System.Int32)">
+ <summary>
+ realizo query para la obtecion de un objeto cliente
+ </summary>
+ <param name="id">campo id de un objeto cliente</param>
+ <returns>retorno objeto cliente</returns>
+</member>
+<member name="M:DAO.ClientesDao.Update(entidades.Clientes)">
+ <summary>
+ realizo query para actualizar los campos de un objeto cliente en la base de datos
+ </summary>
+ <param name="cliente">objeto cliente</param>
+</member>
+<member name="M:DAO.ClientesDao.Delete(System.Int32)">
+ <summary>
+ realizo query que elimina un cliente de la base de datos
+ </summary>
+ <param name="id">campo id de cliente</param>
+</member>
+<member name="M:DAO.ProductosDao.ObjetoAcceso">
+ <summary>
+ Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+ caso contrario creo un nuevo objeto
+ </summary>
+ <returns>retorna un objeto de acceso a datos</returns>
+</member>
+<member name="M:DAO.ProductosDao.Add(entidades.Productos)">
+ <summary>
+ realizo query que agrega un objeto producto a la base de datos
+ </summary>
+ <param name="producto">ojeto producto</param>
+ <returns>retorna el ultimo id insertado</returns>
+</member>
+<member name="M:DAO.ProductosDao.GetAll">
+ <summary>
+ realizo query para la obtencion de una lista de productos de la base de datos
+ </summary>
+ <returns>retorno lista de productos </returns>
+</member>
+<member name="M:DAO.ProductosDao.GetById(System.Int32)">
+ <summary>
+ realizo query para la obtecion de un objeto producto
+ </summary>
+ <param name="id">campo id de un objeto producto</param>
+ <returns>objeto producto</returns>
+</member>
+<member name="M:DAO.ProductosDao.Update(entidades.Productos)">
+ <summary>
+ realizo query para actualizar los campos de un objeto producto en la base de datos
+ </summary>
+ <param name="producto">objeto producto</param>
+</member>
+<member name="M:DAO.ProductosDao.Delete(System.Int32)">
+ <summary>
+ realizo query que elimina un producto de la base de datos
+ </summary>
+ <param name="id">campo id de producto</param>
+</member>
+<member name="M:DAO.ProductosDao.FiltrarPorPrecio(System.Int32,System.Int32)">
+ <summary>
+ realizo query para el filtrado de productos entre precios 
+ </summary>
+ <param name="min">orecio minimo</param>
+ <param name="max">precio maximo</param>
+ <returns>lista de productos</returns>
+</member>
+<member name="M:DAO.VentasDao.ObjetoAcceso">
+ <summary>
+ Uso de patron singleton, verifica que ya exista un instancia, si es asi devuelvo la misma,
+ caso contrario creo un nuevo objeto
+ </summary>
+ <returns>retorna un objeto de acceso a datos</returns>
+</member>
+<member name="M:DAO.VentasDao.Add(entidades.Ventas)">
+ <summary>
+ realizo query que agrega un objeto venta a la base de datos
+ </summary>
+ <param name="venta">objeto venta</param>
+ <returns>ultimo id insertado</returns>
+</member>
+<member name="M:DAO.VentasDao.GetAll">
+ <summary>
+ realizo query para la obtencion de una lista de ventas de la base de datos
+ </summary>
+ <returns>lista de ventas</returns>
+</member>
+<member name="M:DAO.VentasDao.Update(entidades.Ventas)">
+ <summary>
+ realizo query para actualizar los campos de un objeto venta en la base de datos
+ </summary>
+ <param name="venta">objeto venta</param>
+ <returns>id del objeto actualizado</returns>
+</member>
+<member name="M:DAO.VentasDao.Delete(System.Int32)">
+ <summary>
+ realizo query para la eliminacion de una venta y sus productos asociados en la base de datos
+ </summary>
+ <param name="id">id del objeto venta</param>
+</member>
+<member name="M:DAO.VentasDao.AddVentasItems2(System.Data.DataTable)">
+ <summary>
+ realizo query para la insercion de productos de una venta
+ </summary>
+ <param name="data">objeto dataTable</param>
+</member>
+<member name="M:DAO.VentasDao.GetProductosDeUnaVenta(System.Object,System.Object)">
+ <summary>
+ realizo query para la obtencion de productos que tiene una venta
+ </summary>
+ <param name="dataGridProductos">objeto datagrid</param>
+ <param name="idVenta">id de objeto venta</param>
+ <returns>un datatable</returns>
+</member>
+<member name="M:DAO.VentasDao.DeleteProductosDeUnaVenta(System.Int32)">
+ <summary>
+ realizo query para la eliminacion de productos asociados a una venta
+ </summary>
+ <param name="idVenta">id de objeto venta</param>
+</member>
+<member name="M:DAO.VentasDao.GetDatosVentas(System.Object,System.Object)">
+ <summary>
+ realizo query para la obtencion de todos los datos asociados a una venta
+ </summary>
+ <param name="datagridDatosVentas">objeto datagrid</param>
+ <param name="idCliente">id de objeto cliente</param>
+ <returns>de dataTable</returns>
+</member>
+<member name="M:DAO.VentasDao.GetProductosMensuales(System.Object,System.Object,System.Object)">
+ <summary>
+ realizo query para la obtencion de productos vendidos con sus datos en un mes determinado
+ </summary>
+ <param name="datagridProductosMensuales">objeto data grid</param>
+ <param name="fechaMin">fecha minima</param>
+ <param name="fechaMax">fecha maxima</param>
+ <returns>de dataTable</returns>
+</member>
 </members>
 </doc>
