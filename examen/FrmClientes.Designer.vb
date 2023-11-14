@@ -40,12 +40,12 @@ Partial Class FrmClientes
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtFiltrar = New System.Windows.Forms.TextBox()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.DataGridClientes = New System.Windows.Forms.DataGridView()
-        Me.btnCrear = New System.Windows.Forms.Button()
-        Me.btnActualizar = New System.Windows.Forms.Button()
         Me.btnBorrar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.btnCrear = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.DataGridClientes = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -62,11 +62,12 @@ Partial Class FrmClientes
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 57)
+        Me.Panel1.Size = New System.Drawing.Size(834, 57)
         Me.Panel1.TabIndex = 0
         '
         'btnSalir
         '
+        Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
         Me.btnSalir.FlatAppearance.BorderSize = 0
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -93,7 +94,7 @@ Partial Class FrmClientes
         Me.TabControl1.Location = New System.Drawing.Point(0, 57)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(800, 393)
+        Me.TabControl1.Size = New System.Drawing.Size(834, 454)
         Me.TabControl1.TabIndex = 1
         '
         'TabPage1
@@ -111,15 +112,16 @@ Partial Class FrmClientes
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(792, 367)
+        Me.TabPage1.Size = New System.Drawing.Size(826, 428)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Acciones"
         '
         'Label5
         '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(474, 16)
+        Me.Label5.Location = New System.Drawing.Point(491, 47)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(61, 22)
         Me.Label5.TabIndex = 16
@@ -127,6 +129,7 @@ Partial Class FrmClientes
         '
         'GroupBoxCliente
         '
+        Me.GroupBoxCliente.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBoxCliente.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.GroupBoxCliente.Controls.Add(Me.txtNombre)
         Me.GroupBoxCliente.Controls.Add(Me.LabelId)
@@ -137,7 +140,7 @@ Partial Class FrmClientes
         Me.GroupBoxCliente.Controls.Add(Me.txtId)
         Me.GroupBoxCliente.Controls.Add(Me.Label2)
         Me.GroupBoxCliente.Font = New System.Drawing.Font("Times New Roman", 11.0!)
-        Me.GroupBoxCliente.Location = New System.Drawing.Point(41, 22)
+        Me.GroupBoxCliente.Location = New System.Drawing.Point(58, 53)
         Me.GroupBoxCliente.Name = "GroupBoxCliente"
         Me.GroupBoxCliente.Size = New System.Drawing.Size(200, 289)
         Me.GroupBoxCliente.TabIndex = 15
@@ -210,18 +213,81 @@ Partial Class FrmClientes
         '
         'txtFiltrar
         '
-        Me.txtFiltrar.Location = New System.Drawing.Point(541, 18)
+        Me.txtFiltrar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.txtFiltrar.Location = New System.Drawing.Point(558, 49)
         Me.txtFiltrar.Name = "txtFiltrar"
         Me.txtFiltrar.Size = New System.Drawing.Size(206, 20)
         Me.txtFiltrar.TabIndex = 5
         '
+        'btnBorrar
+        '
+        Me.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnBorrar.BackColor = System.Drawing.Color.LightCoral
+        Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBorrar.FlatAppearance.BorderSize = 0
+        Me.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBorrar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnBorrar.Location = New System.Drawing.Point(406, 367)
+        Me.btnBorrar.Name = "btnBorrar"
+        Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
+        Me.btnBorrar.TabIndex = 3
+        Me.btnBorrar.Text = "Borrar"
+        Me.btnBorrar.UseVisualStyleBackColor = False
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
+        Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevo.FlatAppearance.BorderSize = 0
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevo.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnNuevo.Location = New System.Drawing.Point(558, 367)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
+        Me.btnNuevo.TabIndex = 4
+        Me.btnNuevo.Text = "Nuevo"
+        Me.btnNuevo.UseVisualStyleBackColor = False
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizar.FlatAppearance.BorderSize = 0
+        Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnActualizar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnActualizar.Location = New System.Drawing.Point(262, 367)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
+        Me.btnActualizar.TabIndex = 2
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.UseVisualStyleBackColor = False
+        '
+        'btnCrear
+        '
+        Me.btnCrear.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
+        Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCrear.FlatAppearance.BorderSize = 0
+        Me.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCrear.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnCrear.Location = New System.Drawing.Point(124, 367)
+        Me.btnCrear.Name = "btnCrear"
+        Me.btnCrear.Size = New System.Drawing.Size(95, 23)
+        Me.btnCrear.TabIndex = 1
+        Me.btnCrear.Text = "Crear"
+        Me.btnCrear.UseVisualStyleBackColor = False
+        '
         'TableLayoutPanel1
         '
+        Me.TableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.DataGridClientes, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(290, 58)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(307, 89)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -244,6 +310,7 @@ Partial Class FrmClientes
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridClientes.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridClientes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridClientes.EnableHeadersVisualStyles = False
         Me.DataGridClientes.Location = New System.Drawing.Point(3, 3)
@@ -253,70 +320,14 @@ Partial Class FrmClientes
         Me.DataGridClientes.Size = New System.Drawing.Size(454, 250)
         Me.DataGridClientes.TabIndex = 0
         '
-        'btnCrear
-        '
-        Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
-        Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnCrear.FlatAppearance.BorderSize = 0
-        Me.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCrear.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnCrear.Location = New System.Drawing.Point(107, 336)
-        Me.btnCrear.Name = "btnCrear"
-        Me.btnCrear.Size = New System.Drawing.Size(95, 23)
-        Me.btnCrear.TabIndex = 1
-        Me.btnCrear.Text = "Crear"
-        Me.btnCrear.UseVisualStyleBackColor = False
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
-        Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnActualizar.FlatAppearance.BorderSize = 0
-        Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnActualizar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnActualizar.Location = New System.Drawing.Point(245, 336)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
-        Me.btnActualizar.TabIndex = 2
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = False
-        '
-        'btnBorrar
-        '
-        Me.btnBorrar.BackColor = System.Drawing.Color.LightCoral
-        Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnBorrar.FlatAppearance.BorderSize = 0
-        Me.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
-        Me.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBorrar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnBorrar.Location = New System.Drawing.Point(389, 336)
-        Me.btnBorrar.Name = "btnBorrar"
-        Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
-        Me.btnBorrar.TabIndex = 3
-        Me.btnBorrar.Text = "Borrar"
-        Me.btnBorrar.UseVisualStyleBackColor = False
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
-        Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnNuevo.FlatAppearance.BorderSize = 0
-        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevo.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnNuevo.Location = New System.Drawing.Point(541, 336)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
-        Me.btnNuevo.TabIndex = 4
-        Me.btnNuevo.Text = "Nuevo"
-        Me.btnNuevo.UseVisualStyleBackColor = False
-        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(834, 511)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(850, 500)
         Me.Name = "FrmClientes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"

@@ -72,11 +72,12 @@ Partial Class FrmProductos
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 65)
+        Me.Panel1.Size = New System.Drawing.Size(834, 65)
         Me.Panel1.TabIndex = 0
         '
         'btnSalir
         '
+        Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
         Me.btnSalir.FlatAppearance.BorderSize = 0
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -103,7 +104,7 @@ Partial Class FrmProductos
         Me.TabControl1.Location = New System.Drawing.Point(0, 65)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(800, 385)
+        Me.TabControl1.Size = New System.Drawing.Size(834, 396)
         Me.TabControl1.TabIndex = 1
         '
         'TabPage1
@@ -123,12 +124,13 @@ Partial Class FrmProductos
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(792, 359)
+        Me.TabPage1.Size = New System.Drawing.Size(826, 370)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Acciones"
         '
         'LimpiarFiltros
         '
+        Me.LimpiarFiltros.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.LimpiarFiltros.BackgroundImage = CType(resources.GetObject("LimpiarFiltros.BackgroundImage"), System.Drawing.Image)
         Me.LimpiarFiltros.Location = New System.Drawing.Point(716, 24)
         Me.LimpiarFiltros.Name = "LimpiarFiltros"
@@ -138,6 +140,7 @@ Partial Class FrmProductos
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBox1.Controls.Add(Me.btnFiltrarPorPrecio)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -201,6 +204,7 @@ Partial Class FrmProductos
         '
         'Label5
         '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(478, 27)
@@ -211,6 +215,7 @@ Partial Class FrmProductos
         '
         'txtFiltrar
         '
+        Me.txtFiltrar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtFiltrar.Location = New System.Drawing.Point(545, 30)
         Me.txtFiltrar.Name = "txtFiltrar"
         Me.txtFiltrar.Size = New System.Drawing.Size(150, 22)
@@ -218,6 +223,7 @@ Partial Class FrmProductos
         '
         'GroupBoxProductos
         '
+        Me.GroupBoxProductos.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.GroupBoxProductos.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.GroupBoxProductos.Controls.Add(Me.txtNombre)
         Me.GroupBoxProductos.Controls.Add(Me.LabelId)
@@ -301,6 +307,7 @@ Partial Class FrmProductos
         '
         'btnBorrar
         '
+        Me.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnBorrar.BackColor = System.Drawing.Color.LightCoral
         Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBorrar.FlatAppearance.BorderSize = 0
@@ -315,6 +322,7 @@ Partial Class FrmProductos
         '
         'btnNuevo
         '
+        Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
         Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNuevo.FlatAppearance.BorderSize = 0
@@ -328,6 +336,7 @@ Partial Class FrmProductos
         '
         'btnActualizar
         '
+        Me.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
         Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnActualizar.FlatAppearance.BorderSize = 0
@@ -341,6 +350,7 @@ Partial Class FrmProductos
         '
         'btnCrear
         '
+        Me.btnCrear.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
         Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCrear.FlatAppearance.BorderSize = 0
@@ -354,6 +364,7 @@ Partial Class FrmProductos
         '
         'TableLayoutPanel1
         '
+        Me.TableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
@@ -362,7 +373,7 @@ Partial Class FrmProductos
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 228.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(466, 228)
         Me.TableLayoutPanel1.TabIndex = 16
         '
@@ -381,6 +392,7 @@ Partial Class FrmProductos
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridProductos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridProductos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridProductos.EnableHeadersVisualStyles = False
         Me.DataGridProductos.Location = New System.Drawing.Point(3, 3)
@@ -394,9 +406,10 @@ Partial Class FrmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(834, 461)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(850, 500)
         Me.Name = "FrmProductos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmProductos"

@@ -50,7 +50,6 @@ Public Class FrmProductos
         Dim ultimoID As Integer = dao.Add(nuevoProducto)
         CargarDataGrid()
         LimpiarGroupBox()
-        MessageBox.Show(ultimoID)
     End Sub
 
     ''' <summary>
@@ -214,8 +213,13 @@ Public Class FrmProductos
 
         Dim dao = ProductosDao.ObjetoAcceso()
         Dim lista As List(Of Productos) = dao.FiltrarPorPrecio(precioMinimo, precioMaximo)
-        If lista IsNot Nothing Then
+        If lista.Count > 0 Then
             DataGridProductos.DataSource = lista
+            For Each f As DataGridViewRow In DataGridProductos.Rows
+                If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
+                    DataGridProductos.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
+                End If
+            Next
         Else
             MessageBox.Show("no hay productos")
         End If
@@ -253,4 +257,5 @@ Public Class FrmProductos
         Dim formInicio = FrmInicio.ObtenerForm()
         formInicio.Show()
     End Sub
+
 End Class

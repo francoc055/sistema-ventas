@@ -92,8 +92,7 @@ Public Class VentasDao
     ''' realizo query para actualizar los campos de un objeto venta en la base de datos
     ''' </summary>
     ''' <param name="venta">objeto venta</param>
-    ''' <returns>id del objeto actualizado</returns>
-    Public Function Update(venta As Ventas)
+    Public Sub Update(venta As Ventas)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -108,16 +107,15 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@id", venta.id)
 
             comando.ExecuteNonQuery()
-            comando.CommandText = "SELECT IDENT_CURRENT('ventas')"
-            Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
-            Return ultimoId
 
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
         Finally
             conexion.Close()
         End Try
-    End Function
+    End Sub
+
+
 
 
     ''' <summary>
@@ -321,6 +319,7 @@ Public Class VentasDao
             Dim adaptador As New SqlDataAdapter(comando)
 
             adaptador.Fill(tablaProductosMensuales)
+
 
             datagridProductosMensuales.DataSource = tablaProductosMensuales
 

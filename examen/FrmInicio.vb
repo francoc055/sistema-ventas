@@ -1,6 +1,30 @@
 ﻿Public Class FrmInicio
 
     Private Shared ObjetoFrmInicio
+    Private WithEvents timer As New Timer()
+    Private currentIndex As Integer = 0
+    Private textoCompleto As String = "*BIENVENIDO AL SISTEMA*"
+
+    Public Sub New()
+        InitializeComponent()
+
+        ' Configurar el temporizador
+        timer.Interval = 100 ' Intervalo en milisegundos
+        timer.Start()
+    End Sub
+
+    Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
+        ' Verificar si hay más caracteres para mostrar
+        If currentIndex < textoCompleto.Length Then
+            ' Agregar el siguiente carácter al contenido de la etiqueta
+            labelTitulo.Text += textoCompleto(currentIndex)
+            currentIndex += 1
+        Else
+            ' Detener el temporizador cuando se ha mostrado todo el texto
+            timer.Stop()
+        End If
+    End Sub
+
 
     Public Shared Function ObtenerForm() As FrmInicio
         If ObjetoFrmInicio Is Nothing Then
@@ -30,4 +54,6 @@
     Private Sub FrmInicio_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Application.Exit()
     End Sub
+
+
 End Class

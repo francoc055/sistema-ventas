@@ -74,23 +74,25 @@ Public Class FrmAltaVenta
     Private Sub DataGridCorreos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridCorreos.CellClick
         If e.RowIndex >= 0 Then
 
-            For Each f As DataGridViewRow In DataGridCorreos.Rows
-                f.Selected = False
-                f.DefaultCellStyle.BackColor = DataGridCorreos.DefaultCellStyle.BackColor
-            Next
-            DataGridCorreos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            DataGridCorreos.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Orange
+            If Me.cliente Is Nothing Then
+                For Each f As DataGridViewRow In DataGridCorreos.Rows
+                    f.Selected = False
+                    f.DefaultCellStyle.BackColor = DataGridCorreos.DefaultCellStyle.BackColor
+                Next
+                DataGridCorreos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                DataGridCorreos.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.Orange
 
-            Dim fila As DataGridViewRow = DataGridCorreos.Rows(e.RowIndex)
-            Dim id As String = fila.Cells("ColumnaId").Value
-            Dim correo As String = fila.Cells("ColumnaCorreo").Value
+                Dim fila As DataGridViewRow = DataGridCorreos.Rows(e.RowIndex)
+                Dim id As String = fila.Cells("ColumnaId").Value
+                Dim correo As String = fila.Cells("ColumnaCorreo").Value
 
-            txtId.Visible = True
-            txtCorreo.Visible = True
-            txtId.Text = id
-            txtCorreo.Text = correo
-            txtId.Visible = True
-            txtCorreo.Visible = True
+                txtId.Visible = True
+                txtCorreo.Visible = True
+                txtId.Text = id
+                txtCorreo.Text = correo
+                txtId.Visible = True
+                txtCorreo.Visible = True
+            End If
 
         End If
     End Sub
@@ -203,17 +205,18 @@ Public Class FrmAltaVenta
         venta.idCliente = Convert.ToInt32(txtId.Text)
         venta.fecha = New DateTime().Now()
         venta.total = CalcularTotal()
-        Dim idVenta As Integer
-        MessageBox.Show(idVenta)
+
+
 
         If Me.cliente Is Nothing Then
-            idVenta = dao.Add(venta)
+            Me.idVenta = dao.Add(venta)
         Else
-            idVenta = dao.Update(venta)
+            dao.Update(venta)
             dao.DeleteProductosDeUnaVenta(Me.idVenta)
         End If
 
-        InsertarProductosDeUnaVenta(dao, idVenta)
+        InsertarProductosDeUnaVenta(dao, Me.idVenta)
+
 
 
         Me.DialogResult = DialogResult.OK

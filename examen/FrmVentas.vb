@@ -168,13 +168,12 @@ Public Class FrmVentas
         Dim result As DialogResult = FormAlta.ShowDialog()
         If result = DialogResult.OK Then
             CargarDataGridVentas()
-            For Each f As DataGridViewRow In DataGridVentas.Rows
-                If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
-                    DataGridVentas.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
-                End If
-            Next
-
         End If
+        For Each f As DataGridViewRow In DataGridVentas.Rows
+            If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
+                DataGridVentas.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
+            End If
+        Next
         btnActualizar.Enabled = False
         btnBorrar.Enabled = False
         btnCrear.Enabled = True

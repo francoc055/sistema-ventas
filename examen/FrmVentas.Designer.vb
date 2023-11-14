@@ -72,7 +72,7 @@ Partial Class FrmVentas
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 64)
+        Me.Panel1.Size = New System.Drawing.Size(834, 64)
         Me.Panel1.TabIndex = 0
         '
         'Label1
@@ -87,6 +87,7 @@ Partial Class FrmVentas
         '
         'btnSalir
         '
+        Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.BackgroundImage = CType(resources.GetObject("btnSalir.BackgroundImage"), System.Drawing.Image)
         Me.btnSalir.FlatAppearance.BorderSize = 0
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -105,7 +106,7 @@ Partial Class FrmVentas
         Me.TabControl1.Location = New System.Drawing.Point(0, 64)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(800, 386)
+        Me.TabControl1.Size = New System.Drawing.Size(834, 397)
         Me.TabControl1.TabIndex = 1
         '
         'TabPage1
@@ -122,7 +123,7 @@ Partial Class FrmVentas
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(792, 360)
+        Me.TabPage1.Size = New System.Drawing.Size(826, 371)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Acciones"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -143,6 +144,7 @@ Partial Class FrmVentas
         '
         'TableLayoutPanel1
         '
+        Me.TableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
@@ -170,6 +172,7 @@ Partial Class FrmVentas
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridVentas.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridVentas.EnableHeadersVisualStyles = False
         Me.DataGridVentas.Location = New System.Drawing.Point(3, 3)
@@ -181,6 +184,7 @@ Partial Class FrmVentas
         '
         'Label5
         '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(234, 7)
@@ -191,6 +195,7 @@ Partial Class FrmVentas
         '
         'txtFiltrar
         '
+        Me.txtFiltrar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.txtFiltrar.Location = New System.Drawing.Point(301, 9)
         Me.txtFiltrar.Name = "txtFiltrar"
         Me.txtFiltrar.Size = New System.Drawing.Size(184, 20)
@@ -198,6 +203,7 @@ Partial Class FrmVentas
         '
         'btnBorrar
         '
+        Me.btnBorrar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnBorrar.BackColor = System.Drawing.Color.LightSalmon
         Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBorrar.FlatAppearance.BorderSize = 0
@@ -212,6 +218,7 @@ Partial Class FrmVentas
         '
         'btnNuevo
         '
+        Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
         Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnNuevo.FlatAppearance.BorderSize = 0
@@ -225,6 +232,7 @@ Partial Class FrmVentas
         '
         'btnActualizar
         '
+        Me.btnActualizar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
         Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnActualizar.FlatAppearance.BorderSize = 0
@@ -238,6 +246,7 @@ Partial Class FrmVentas
         '
         'btnCrear
         '
+        Me.btnCrear.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
         Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnCrear.FlatAppearance.BorderSize = 0
@@ -257,13 +266,14 @@ Partial Class FrmVentas
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(792, 360)
+        Me.TabPage2.Size = New System.Drawing.Size(826, 371)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Reporte ventas"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Label2
         '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(53, 8)
         Me.Label2.Name = "Label2"
@@ -273,6 +283,7 @@ Partial Class FrmVentas
         '
         'cbCorreosClientes
         '
+        Me.cbCorreosClientes.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbCorreosClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCorreosClientes.FormattingEnabled = True
         Me.cbCorreosClientes.Location = New System.Drawing.Point(6, 24)
@@ -282,6 +293,7 @@ Partial Class FrmVentas
         '
         'TableLayoutPanel2
         '
+        Me.TableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TableLayoutPanel2.ColumnCount = 1
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
@@ -327,13 +339,14 @@ Partial Class FrmVentas
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(792, 360)
+        Me.TabPage3.Size = New System.Drawing.Size(826, 371)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Reporte productos"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
         'Label3
         '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(67, 7)
         Me.Label3.Name = "Label3"
@@ -343,6 +356,7 @@ Partial Class FrmVentas
         '
         'TableLayoutPanel3
         '
+        Me.TableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TableLayoutPanel3.ColumnCount = 1
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
@@ -383,6 +397,7 @@ Partial Class FrmVentas
         '
         'cbMes
         '
+        Me.cbMes.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbMes.FormattingEnabled = True
         Me.cbMes.Items.AddRange(New Object() {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"})
@@ -395,9 +410,10 @@ Partial Class FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(834, 461)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel1)
+        Me.MinimumSize = New System.Drawing.Size(850, 500)
         Me.Name = "FrmVentas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmVentas"
