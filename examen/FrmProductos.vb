@@ -8,6 +8,9 @@ Public Class FrmProductos
         CargarDataGrid()
     End Sub
 
+    ''' <summary>
+    ''' bloque botones del form
+    ''' </summary>
     Public Sub BloquearBotones()
         txtId.Visible = False
         LabelId.Visible = False
@@ -16,6 +19,12 @@ Public Class FrmProductos
         btnCrear.Enabled = True
     End Sub
 
+    ''' <summary>
+    ''' carga informacion de los textbox y los carga para crear un producto, invocando un metodo para
+    ''' hacer la insercion en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnCrear_Click(sender As Object, e As EventArgs) Handles btnCrear.Click
         Dim nombre As String = txtNombre.Text
         Dim precio As String = txtPrecio.Text
@@ -44,6 +53,9 @@ Public Class FrmProductos
         MessageBox.Show(ultimoID)
     End Sub
 
+    ''' <summary>
+    ''' cargo el data grid view de productos con la informacion que obtengo de la base de datos
+    ''' </summary>
     Private Sub CargarDataGrid()
         Dim dao = ProductosDao.ObjetoAcceso()
         Dim lista As List(Of Productos) = dao.GetAll()
@@ -55,6 +67,9 @@ Public Class FrmProductos
         Next
     End Sub
 
+    ''' <summary>
+    ''' limpia el groupbox que contiene a los textbox
+    ''' </summary>
     Public Sub LimpiarGroupBox()
         For Each control As Control In GroupBoxProductos.Controls
             If TypeOf control Is TextBox Then
@@ -65,6 +80,12 @@ Public Class FrmProductos
         LabelId.Visible = False
     End Sub
 
+    ''' <summary>
+    ''' al hacer click en una fila del data grid view, verifico el valor de la columnas y cargo los textbox con 
+    ''' la informacion asociada 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DataGridProductos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProductos.CellClick
         If e.RowIndex >= 0 Then
             Dim fila As DataGridViewRow = DataGridProductos.Rows(e.RowIndex)
@@ -88,11 +109,22 @@ Public Class FrmProductos
         End If
     End Sub
 
+    ''' <summary>
+    ''' bloquea botones y limpia el groupbox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
         BloquearBotones()
         LimpiarGroupBox()
     End Sub
 
+    ''' <summary>
+    '''actualiza un producto seleccionado, invocando un metodo para
+    ''' hacer el update en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
         Dim nombre As String = txtNombre.Text
         Dim precio As String = txtPrecio.Text
@@ -117,6 +149,12 @@ Public Class FrmProductos
         BloquearBotones()
     End Sub
 
+    ''' <summary>
+    '''elimina un producto seleccionado, invocando un metodo para
+    ''' hacer el delete en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnBorrar_Click(sender As Object, e As EventArgs) Handles btnBorrar.Click
         If Not String.IsNullOrEmpty(txtId.Text) Then
             Dim id As Integer = Convert.ToInt32(txtId.Text)
@@ -132,10 +170,17 @@ Public Class FrmProductos
             End If
 
         Else
-            MessageBox.Show("Debe seleccionar un cliente")
+            MessageBox.Show("Debe seleccionar un producto")
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' al haber un cambio en el textbox, se filtra buscando en todos los valores de las columnas
+    ''' si hay alguna similitud se deja visible, de lo contrario no se deja visible en el data grid
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtFiltrar_TextChanged(sender As Object, e As EventArgs) Handles txtFiltrar.TextChanged
         If txtFiltrar.Text <> "" Then
 
@@ -157,6 +202,12 @@ Public Class FrmProductos
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' toma dos precios uno minimo y otro maximo y busca productos con precios entre esos limites
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnFiltrarPorPrecio_Click(sender As Object, e As EventArgs) Handles btnFiltrarPorPrecio.Click
         Dim precioMinimo As Integer = precioMin.Value
         Dim precioMaximo As Decimal = precioMax.Value
@@ -170,6 +221,11 @@ Public Class FrmProductos
         End If
     End Sub
 
+    ''' <summary>
+    ''' limpia todos los filtros que haya tanto por busqueda de texto como filtrado de precios
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub LimpiarFiltros_Click(sender As Object, e As EventArgs) Handles LimpiarFiltros.Click
         CargarDataGrid()
         txtFiltrar.Text = String.Empty
@@ -177,12 +233,22 @@ Public Class FrmProductos
         precioMax.Value = precioMax.Minimum
     End Sub
 
+    ''' <summary>
+    ''' cierra el formulario actual y abre una instancia del formulario de inicio
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Dim formInicio = FrmInicio.ObtenerForm()
         formInicio.Show()
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' una ves cerrado el formulario, abre una instancia del formulario de inicio
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub FrmProductos_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim formInicio = FrmInicio.ObtenerForm()
         formInicio.Show()

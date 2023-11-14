@@ -35,7 +35,8 @@ Public Class ClientesDao
     ''' realizo query que agrega un objeto cliente a la base de datos
     ''' </summary>
     ''' <param name="cliente">objeto cliente</param>
-    Public Sub Add(cliente As Clientes)
+    ''' <returns>ultimo id insertado</returns>
+    Public Function Add(cliente As Clientes)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -46,7 +47,9 @@ Public Class ClientesDao
 
 
             comando.ExecuteNonQuery()
-            Console.WriteLine("cliente insertado")
+            comando.CommandText = "SELECT IDENT_CURRENT('clientes')"
+            Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
+            Return ultimoId
 
         Catch e As Exception
             Console.WriteLine(e.ToString())
@@ -54,7 +57,7 @@ Public Class ClientesDao
             conexion.Close()
         End Try
 
-    End Sub
+    End Function
 
     ''' <summary>
     ''' realizo query para la obtencion de una lista de clientes de la base de datos

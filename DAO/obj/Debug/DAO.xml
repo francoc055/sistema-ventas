@@ -34,6 +34,7 @@ DAO
  realizo query que agrega un objeto cliente a la base de datos
  </summary>
  <param name="cliente">objeto cliente</param>
+ <returns>ultimo id insertado</returns>
 </member>
 <member name="M:DAO.ClientesDao.GetAll">
  <summary>

@@ -8,6 +8,10 @@ Public Class FrmClientes
         CargarDataGrid()
     End Sub
 
+
+    ''' <summary>
+    ''' bloque botones del form
+    ''' </summary>
     Public Sub BloquearBotones()
         txtId.Visible = False
         LabelId.Visible = False
@@ -16,7 +20,12 @@ Public Class FrmClientes
         btnCrear.Enabled = True
     End Sub
 
-    'creo un objeto Clientes y lo cargo en la BD
+    ''' <summary>
+    ''' carga informacion de los textbox y los carga para crear un cliente, invocando un metodo para
+    ''' hacer la insercion en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnCrear_Click(sender As Object, e As EventArgs) Handles btnCrear.Click
         Dim nombre As String = txtNombre.Text
         Dim telefono As String = txtTelefono.Text
@@ -35,7 +44,6 @@ Public Class FrmClientes
             Return
         End If
 
-        'MessageBox.Show("paso")
 
         Dim nuevoCliente As New Clientes()
         nuevoCliente.cliente = nombre
@@ -47,7 +55,9 @@ Public Class FrmClientes
         CargarDataGrid()
     End Sub
 
-    'cargo datagrid en base a la lista que traigo de la BD
+    ''' <summary>
+    ''' cargo el data grid view de cliente con la informacion que obtengo de la base de datos
+    ''' </summary>
     Private Sub CargarDataGrid()
         Dim dao = ClientesDao.ObjetoAcceso()
         Dim lista As List(Of Clientes) = dao.GetAll()
@@ -59,6 +69,11 @@ Public Class FrmClientes
         Next
     End Sub
 
+    ''' <summary>
+    ''' verifico que el correo sea valido
+    ''' </summary>
+    ''' <param name="correo"></param>
+    ''' <returns></returns>
     Function EsCorreoElectronicoValido(correo As String) As Boolean
         If String.IsNullOrEmpty(correo) Then
             Return False
@@ -72,7 +87,12 @@ Public Class FrmClientes
         Return True
     End Function
 
-    'cuando hago click en una celda verifico el indice y lo cargo en los textBox
+    ''' <summary>
+    ''' al hacer click en una fila del data grid view, verifico el valor de la columnas y cargo los textbox con 
+    ''' la informacion asociada
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DataGridClientes_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridClientes.CellClick
 
         If e.RowIndex >= 0 Then
@@ -98,12 +118,19 @@ Public Class FrmClientes
         End If
     End Sub
 
-
+    ''' <summary>
+    ''' bloquea botones y limpia el groupbox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
         BloquearBotones()
         LimpiarGroupBox()
     End Sub
 
+    ''' <summary>
+    ''' limpia el groupbox que contiene a los textbox
+    ''' </summary>
     Public Sub LimpiarGroupBox()
         For Each control As Control In GroupBoxCliente.Controls
             If TypeOf control Is TextBox Then
@@ -114,6 +141,12 @@ Public Class FrmClientes
         LabelId.Visible = False
     End Sub
 
+    ''' <summary>
+    '''carga informacion de los textbox y los carga para actualizar un cliente, invocando un metodo para
+    ''' hacer el update en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnActualizar_Click(sender As Object, e As EventArgs) Handles btnActualizar.Click
         Dim nombre As String = txtNombre.Text
         Dim telefono As String = txtTelefono.Text
@@ -140,6 +173,12 @@ Public Class FrmClientes
 
     End Sub
 
+    ''' <summary>
+    '''carga informacion de los textbox y los carga para eliminar un cliente, invocando un metodo para
+    ''' hacer el delete en la base de datos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnBorrar_Click(sender As Object, e As EventArgs) Handles btnBorrar.Click
         If Not String.IsNullOrEmpty(txtId.Text) Then
             Dim id As Integer = Convert.ToInt32(txtId.Text)
@@ -160,6 +199,12 @@ Public Class FrmClientes
 
     End Sub
 
+    ''' <summary>
+    ''' al haber un cambio en el textbox, se filtra buscando en todos los valores de las columnas
+    ''' si hay alguna similitud se deja visible, de lo contrario no se deja visible en el data grid
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub txtFiltrar_TextChanged(sender As Object, e As EventArgs) Handles txtFiltrar.TextChanged
         If txtFiltrar.Text <> "" Then
 
@@ -181,12 +226,22 @@ Public Class FrmClientes
         End If
     End Sub
 
+    ''' <summary>
+    ''' cierra el formulario actual y abre una instancia del formulario de inicio
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Dim formInicio = FrmInicio.ObtenerForm()
         formInicio.Show()
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' una ves cerrado el formulario, abre una instancia del formulario de inicio
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub FrmClientes_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim formInicio = FrmInicio.ObtenerForm()
         formInicio.Show()

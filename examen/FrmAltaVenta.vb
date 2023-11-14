@@ -40,6 +40,10 @@ Public Class FrmAltaVenta
 
     End Sub
 
+    ''' <summary>
+    ''' cargo data grid con el correo del cliente a actualizar 
+    ''' </summary>
+    ''' <param name="cliente"></param>
     Public Sub CargarDataGridCorreoConCliente(cliente As Clientes)
         Dim fila As DataGridViewRow = New DataGridViewRow()
         fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cliente.id})
@@ -47,6 +51,9 @@ Public Class FrmAltaVenta
         DataGridCorreos.Rows.Add(fila)
     End Sub
 
+    ''' <summary>
+    ''' cargo en el data grid los correos de los clientes guardados en la base de datos
+    ''' </summary>
     Public Sub CargarDataGridCorreos()
         Dim daoClientes = ClientesDao.ObjetoAcceso()
         Dim listaClientes As List(Of Clientes) = daoClientes.GetAll()
@@ -59,6 +66,11 @@ Public Class FrmAltaVenta
         Next
     End Sub
 
+    ''' <summary>
+    ''' guardo el id y el correo del cliente al cual se le hizo click en el data grid
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DataGridCorreos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridCorreos.CellClick
         If e.RowIndex >= 0 Then
 
@@ -83,6 +95,9 @@ Public Class FrmAltaVenta
         End If
     End Sub
 
+    ''' <summary>
+    ''' cargo el combobox con los productos existentes en la base de datos
+    ''' </summary>
     Private Sub CargarComboboxProductos()
         Dim daoProductos = ProductosDao.ObjetoAcceso()
         Dim listaProductos As List(Of Productos) = daoProductos.GetAll()
@@ -91,6 +106,12 @@ Public Class FrmAltaVenta
         cbProductos.DataSource = listaProductos
     End Sub
 
+    ''' <summary>
+    ''' verifico si hubo un cambio el combobox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <returns>el elemento seleccionado en el combobox</returns>
     Private Function cbProductos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbProductos.SelectedIndexChanged
         Dim productoSeleccionado As Productos = TryCast(cbProductos.SelectedItem, Productos)
 
@@ -99,6 +120,11 @@ Public Class FrmAltaVenta
         End If
     End Function
 
+    ''' <summary>
+    ''' al presionar el boton se carga en el data grid el elemento establecido en el combobox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnCargarProducto_Click(sender As Object, e As EventArgs) Handles btnCargarProducto.Click
         Dim producto As Productos = cbProductos_SelectedIndexChanged(cbProductos, EventArgs.Empty)
 
@@ -119,6 +145,12 @@ Public Class FrmAltaVenta
 
     End Sub
 
+
+    ''' <summary>
+    ''' carga el data grid de productos
+    ''' </summary>
+    ''' <param name="producto">producto elegido</param>
+    ''' <param name="cantidad">cantidad del producto establecida</param>
     Public Sub CargarDataGridProductos(producto As Productos, cantidad As Integer)
         If Me.cliente Is Nothing Then
             Dim fila As DataGridViewRow = New DataGridViewRow()
@@ -131,28 +163,35 @@ Public Class FrmAltaVenta
         Else
             Dim dataTableProductos As DataTable = DirectCast(DataGridProducto.DataSource, DataTable)
 
-            ' Crear una nueva fila y asignar valores
             Dim nuevaFila As DataRow = dataTableProductos.NewRow()
             nuevaFila("ID") = producto.id
             nuevaFila("Nombre") = producto.nombre
             nuevaFila("Precio") = producto.precio
             nuevaFila("Cant") = cantidad
 
-            ' Agregar la nueva fila al DataTable
+
             dataTableProductos.Rows.Add(nuevaFila)
         End If
 
-
-
-
     End Sub
 
+    ''' <summary>
+    ''' limpia los todo lo que se haya seleccionado, tanto cliente como productos
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub LimpiarFiltros_Click(sender As Object, e As EventArgs) Handles LimpiarFiltros.Click
         DataGridProducto.Rows.Clear()
         txtCorreo.Text = String.Empty
         txtId.Text = String.Empty
     End Sub
 
+    ''' <summary>
+    ''' mediante una query se realiza la insercion de la venta con sus respectivos productos
+    ''' validando que estos hayan sido seleccionados
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub btnCrearVenta_Click(sender As Object, e As EventArgs) Handles btnCrearVenta.Click
         If String.IsNullOrEmpty(txtId.Text) Or DataGridProducto.Rows.Count = 0 Then
             MessageBox.Show("Error. debe seleccionar cliente y producto")
@@ -182,6 +221,10 @@ Public Class FrmAltaVenta
     End Sub
 
 
+    ''' <summary>
+    ''' calcula el total de una venta
+    ''' </summary>
+    ''' <returns>totald de una venta</returns>
     Private Function CalcularTotal() As Decimal
         Dim precioTotal As Decimal = 0
         For Each fila As DataGridViewRow In DataGridProducto.Rows
@@ -191,12 +234,24 @@ Public Class FrmAltaVenta
         Return precioTotal
     End Function
 
+    ''' <summary>
+    ''' calcula el total de un producto de la venta
+    ''' </summary>
+    ''' <param name="fila"></param>
+    ''' <returns>total de un producto de la venta</returns>
     Private Function CalcularTotalDeUnProducto(fila As DataGridViewRow) As Decimal
         Dim precioTotal As Decimal = 0
         precioTotal += Convert.ToInt32(fila.Cells("Precio").Value) * Convert.ToInt32(fila.Cells("Cant").Value)
         Return precioTotal
     End Function
 
+
+    ''' <summary>
+    ''' recorre el data grid de productos para hacer la insercion de estos en la base de datos
+    ''' </summary>
+    ''' <param name="dao"></param>
+    ''' <param name="idVenta"></param>
+    ''' <returns></returns>
     Public Function InsertarProductosDeUnaVenta(dao As VentasDao, idVenta As Integer)
         Dim data = New DataTable()
         data.Columns.Add("IDVenta")
@@ -226,6 +281,12 @@ Public Class FrmAltaVenta
         End If
     End Function
 
+    ''' <summary>
+    ''' al hacer click en algun elemento del data grid de productos existe la posibilidad mediante una ventana modal
+    ''' eliminar dicho elemento individualmente
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DataGridProducto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridProducto.CellClick
         If e.RowIndex >= 0 Then
             Dim indice = DataGridProducto.Rows(e.RowIndex).Index

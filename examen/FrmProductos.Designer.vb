@@ -119,6 +119,7 @@ Partial Class FrmProductos
         Me.TabPage1.Controls.Add(Me.btnActualizar)
         Me.TabPage1.Controls.Add(Me.btnCrear)
         Me.TabPage1.Controls.Add(Me.TableLayoutPanel1)
+        Me.TabPage1.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -142,6 +143,7 @@ Partial Class FrmProductos
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.precioMax)
         Me.GroupBox1.Controls.Add(Me.precioMin)
+        Me.GroupBox1.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.GroupBox1.Location = New System.Drawing.Point(285, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(187, 65)
@@ -161,18 +163,20 @@ Partial Class FrmProductos
         'Label7
         '
         Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.Label7.Location = New System.Drawing.Point(11, 40)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(29, 13)
+        Me.Label7.Size = New System.Drawing.Size(30, 15)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "max."
         '
         'Label6
         '
         Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.Label6.Location = New System.Drawing.Point(14, 21)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(26, 13)
+        Me.Label6.Size = New System.Drawing.Size(29, 15)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "min."
         '
@@ -182,16 +186,17 @@ Partial Class FrmProductos
         Me.precioMax.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
         Me.precioMax.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.precioMax.Name = "precioMax"
-        Me.precioMax.Size = New System.Drawing.Size(64, 20)
+        Me.precioMax.Size = New System.Drawing.Size(64, 22)
         Me.precioMax.TabIndex = 1
         Me.precioMax.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'precioMin
         '
+        Me.precioMin.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.precioMin.Location = New System.Drawing.Point(46, 19)
         Me.precioMin.Maximum = New Decimal(New Integer() {999999, 0, 0, 0})
         Me.precioMin.Name = "precioMin"
-        Me.precioMin.Size = New System.Drawing.Size(64, 20)
+        Me.precioMin.Size = New System.Drawing.Size(64, 22)
         Me.precioMin.TabIndex = 0
         '
         'Label5
@@ -208,7 +213,7 @@ Partial Class FrmProductos
         '
         Me.txtFiltrar.Location = New System.Drawing.Point(545, 30)
         Me.txtFiltrar.Name = "txtFiltrar"
-        Me.txtFiltrar.Size = New System.Drawing.Size(150, 20)
+        Me.txtFiltrar.Size = New System.Drawing.Size(150, 22)
         Me.txtFiltrar.TabIndex = 23
         '
         'GroupBoxProductos
@@ -222,6 +227,7 @@ Partial Class FrmProductos
         Me.GroupBoxProductos.Controls.Add(Me.Label3)
         Me.GroupBoxProductos.Controls.Add(Me.txtId)
         Me.GroupBoxProductos.Controls.Add(Me.Label2)
+        Me.GroupBoxProductos.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         Me.GroupBoxProductos.Location = New System.Drawing.Point(42, 25)
         Me.GroupBoxProductos.Name = "GroupBoxProductos"
         Me.GroupBoxProductos.Size = New System.Drawing.Size(200, 274)
@@ -233,7 +239,7 @@ Partial Class FrmProductos
         '
         Me.txtNombre.Location = New System.Drawing.Point(67, 65)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(127, 20)
+        Me.txtNombre.Size = New System.Drawing.Size(127, 22)
         Me.txtNombre.TabIndex = 6
         '
         'LabelId
@@ -241,7 +247,7 @@ Partial Class FrmProductos
         Me.LabelId.AutoSize = True
         Me.LabelId.Location = New System.Drawing.Point(28, 250)
         Me.LabelId.Name = "LabelId"
-        Me.LabelId.Size = New System.Drawing.Size(16, 13)
+        Me.LabelId.Size = New System.Drawing.Size(18, 15)
         Me.LabelId.TabIndex = 13
         Me.LabelId.Text = "Id"
         '
@@ -249,7 +255,7 @@ Partial Class FrmProductos
         '
         Me.txtPrecio.Location = New System.Drawing.Point(67, 129)
         Me.txtPrecio.Name = "txtPrecio"
-        Me.txtPrecio.Size = New System.Drawing.Size(127, 20)
+        Me.txtPrecio.Size = New System.Drawing.Size(127, 22)
         Me.txtPrecio.TabIndex = 14
         '
         'Label4
@@ -257,7 +263,7 @@ Partial Class FrmProductos
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(6, 196)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(52, 13)
+        Me.Label4.Size = New System.Drawing.Size(58, 15)
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Categoria"
         '
@@ -265,7 +271,7 @@ Partial Class FrmProductos
         '
         Me.txtCategoria.Location = New System.Drawing.Point(66, 193)
         Me.txtCategoria.Name = "txtCategoria"
-        Me.txtCategoria.Size = New System.Drawing.Size(127, 20)
+        Me.txtCategoria.Size = New System.Drawing.Size(127, 22)
         Me.txtCategoria.TabIndex = 8
         '
         'Label3
@@ -273,7 +279,7 @@ Partial Class FrmProductos
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(14, 132)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(37, 13)
+        Me.Label3.Size = New System.Drawing.Size(40, 15)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "Precio"
         '
@@ -281,7 +287,7 @@ Partial Class FrmProductos
         '
         Me.txtId.Location = New System.Drawing.Point(85, 247)
         Me.txtId.Name = "txtId"
-        Me.txtId.Size = New System.Drawing.Size(85, 20)
+        Me.txtId.Size = New System.Drawing.Size(85, 22)
         Me.txtId.TabIndex = 9
         '
         'Label2
@@ -289,45 +295,62 @@ Partial Class FrmProductos
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(7, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.Size = New System.Drawing.Size(49, 15)
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "Nombre"
         '
         'btnBorrar
         '
+        Me.btnBorrar.BackColor = System.Drawing.Color.LightCoral
+        Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBorrar.FlatAppearance.BorderSize = 0
+        Me.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBorrar.Location = New System.Drawing.Point(390, 324)
         Me.btnBorrar.Name = "btnBorrar"
         Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
         Me.btnBorrar.TabIndex = 19
         Me.btnBorrar.Text = "Borrar"
-        Me.btnBorrar.UseVisualStyleBackColor = True
+        Me.btnBorrar.UseVisualStyleBackColor = False
         '
         'btnNuevo
         '
+        Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
+        Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevo.FlatAppearance.BorderSize = 0
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNuevo.Location = New System.Drawing.Point(542, 326)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
         Me.btnNuevo.TabIndex = 20
         Me.btnNuevo.Text = "Nuevo"
-        Me.btnNuevo.UseVisualStyleBackColor = True
+        Me.btnNuevo.UseVisualStyleBackColor = False
         '
         'btnActualizar
         '
+        Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizar.FlatAppearance.BorderSize = 0
+        Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnActualizar.Location = New System.Drawing.Point(246, 324)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
         Me.btnActualizar.TabIndex = 18
         Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
+        Me.btnActualizar.UseVisualStyleBackColor = False
         '
         'btnCrear
         '
+        Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
+        Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCrear.FlatAppearance.BorderSize = 0
+        Me.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCrear.Location = New System.Drawing.Point(108, 324)
         Me.btnCrear.Name = "btnCrear"
         Me.btnCrear.Size = New System.Drawing.Size(95, 23)
         Me.btnCrear.TabIndex = 17
         Me.btnCrear.Text = "Crear"
-        Me.btnCrear.UseVisualStyleBackColor = True
+        Me.btnCrear.UseVisualStyleBackColor = False
         '
         'TableLayoutPanel1
         '
@@ -347,11 +370,11 @@ Partial Class FrmProductos
         '
         Me.DataGridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridProductos.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.DataGridProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.DataGridProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataGridProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.DataGridProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Times New Roman", 9.25!)
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText

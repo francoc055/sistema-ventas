@@ -108,6 +108,7 @@ Partial Class FrmInicio
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.btnProductos)
         Me.Controls.Add(Me.btnClientes)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "FrmInicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmInicio"

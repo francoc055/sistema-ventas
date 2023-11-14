@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+entidades
+</name>
+</assembly>
+<members>
+<member name="T:entidades.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:entidades.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:entidades.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:entidades.Clientes.VerificarClienteExistente(System.Collections.Generic.List{entidades.Clientes},System.String)">
+ <summary>
+ verifica que no exista otro cliente con el mismo correo
+ </summary>
+ <param name="listaClientes">lista de clientes existenten en la base de datos</param>
+ <param name="correo">correo del cliente a dar de alta</param>
+ <returns>retorna TRUE si existe el cliente, caso contrario FALSE</returns>
+</member>
+<member name="M:entidades.Productos.VerificarProductoExistente(System.Collections.Generic.List{entidades.Productos},System.String,System.String)">
+ <summary>
+ verifica que no exista otro producto con el mismo nombre y categoria
+ </summary>
+ <param name="listaProductos">lista de productos existenten en la base de datos</param>
+ <param name="nombre">nombre del producto a dar de alta</param>
+ <param name="categoria">categoria del producto a dar de alta</param>
+ <returns>retorna TRUE si existe el producto, caso contrario FALSE</returns>
+</member>
+</members>
+</doc>

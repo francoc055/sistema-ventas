@@ -47,7 +47,6 @@ Public Class ProductosDao
             'comando.ExecuteNonQuery()
             comando.CommandText = "SELECT IDENT_CURRENT('productos')"
             Dim ultimoId As Integer = Convert.ToInt32(comando.ExecuteScalar())
-            Console.WriteLine("producto insertado")
             Return ultimoId
 
         Catch e As Exception
@@ -150,21 +149,24 @@ Public Class ProductosDao
     ''' </summary>
     ''' <param name="id">campo id de producto</param>
     Public Sub Delete(id As Integer)
-        Try
-            comando.Parameters.Clear()
-            conexion.Open()
-            comando.CommandText = "delete from productos where ID = @id"
-            comando.Parameters.AddWithValue("@id", id)
-            comando.ExecuteNonQuery()
+        comando.Parameters.Clear()
+        conexion.Open()
+        Using transaction As SqlTransaction = conexion.BeginTransaction
+            Try
+                comando.CommandText = "delete from productos where ID = @id
+                                        delete from ventasitems where IDProducto = @id;"
+                comando.Parameters.AddWithValue("@id", id)
+                comando.Transaction = transaction
+                comando.ExecuteNonQuery()
 
-            Console.WriteLine("producto eliminado")
-
-
-        Catch ex As Exception
-            Console.WriteLine(ex.ToString())
-        Finally
-            conexion.Close()
-        End Try
+                transaction.Commit()
+            Catch ex As Exception
+                transaction.Rollback()
+                Console.WriteLine(ex.ToString())
+            Finally
+                conexion.Close()
+            End Try
+        End Using
     End Sub
 
 

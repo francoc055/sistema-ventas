@@ -40,12 +40,12 @@ Partial Class FrmClientes
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtFiltrar = New System.Windows.Forms.TextBox()
-        Me.btnBorrar = New System.Windows.Forms.Button()
-        Me.btnNuevo = New System.Windows.Forms.Button()
-        Me.btnActualizar = New System.Windows.Forms.Button()
-        Me.btnCrear = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridClientes = New System.Windows.Forms.DataGridView()
+        Me.btnCrear = New System.Windows.Forms.Button()
+        Me.btnActualizar = New System.Windows.Forms.Button()
+        Me.btnBorrar = New System.Windows.Forms.Button()
+        Me.btnNuevo = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -215,46 +215,6 @@ Partial Class FrmClientes
         Me.txtFiltrar.Size = New System.Drawing.Size(206, 20)
         Me.txtFiltrar.TabIndex = 5
         '
-        'btnBorrar
-        '
-        Me.btnBorrar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnBorrar.Location = New System.Drawing.Point(389, 336)
-        Me.btnBorrar.Name = "btnBorrar"
-        Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
-        Me.btnBorrar.TabIndex = 3
-        Me.btnBorrar.Text = "Borrar"
-        Me.btnBorrar.UseVisualStyleBackColor = True
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnNuevo.Location = New System.Drawing.Point(541, 336)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
-        Me.btnNuevo.TabIndex = 4
-        Me.btnNuevo.Text = "Nuevo"
-        Me.btnNuevo.UseVisualStyleBackColor = True
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnActualizar.Location = New System.Drawing.Point(245, 336)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
-        Me.btnActualizar.TabIndex = 2
-        Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
-        '
-        'btnCrear
-        '
-        Me.btnCrear.Font = New System.Drawing.Font("Times New Roman", 10.0!)
-        Me.btnCrear.Location = New System.Drawing.Point(107, 336)
-        Me.btnCrear.Name = "btnCrear"
-        Me.btnCrear.Size = New System.Drawing.Size(95, 23)
-        Me.btnCrear.TabIndex = 1
-        Me.btnCrear.Text = "Crear"
-        Me.btnCrear.UseVisualStyleBackColor = True
-        '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 1
@@ -293,6 +253,63 @@ Partial Class FrmClientes
         Me.DataGridClientes.Size = New System.Drawing.Size(454, 250)
         Me.DataGridClientes.TabIndex = 0
         '
+        'btnCrear
+        '
+        Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
+        Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCrear.FlatAppearance.BorderSize = 0
+        Me.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCrear.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnCrear.Location = New System.Drawing.Point(107, 336)
+        Me.btnCrear.Name = "btnCrear"
+        Me.btnCrear.Size = New System.Drawing.Size(95, 23)
+        Me.btnCrear.TabIndex = 1
+        Me.btnCrear.Text = "Crear"
+        Me.btnCrear.UseVisualStyleBackColor = False
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizar.FlatAppearance.BorderSize = 0
+        Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnActualizar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnActualizar.Location = New System.Drawing.Point(245, 336)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
+        Me.btnActualizar.TabIndex = 2
+        Me.btnActualizar.Text = "Actualizar"
+        Me.btnActualizar.UseVisualStyleBackColor = False
+        '
+        'btnBorrar
+        '
+        Me.btnBorrar.BackColor = System.Drawing.Color.LightCoral
+        Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBorrar.FlatAppearance.BorderSize = 0
+        Me.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBorrar.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnBorrar.Location = New System.Drawing.Point(389, 336)
+        Me.btnBorrar.Name = "btnBorrar"
+        Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
+        Me.btnBorrar.TabIndex = 3
+        Me.btnBorrar.Text = "Borrar"
+        Me.btnBorrar.UseVisualStyleBackColor = False
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
+        Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevo.FlatAppearance.BorderSize = 0
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevo.Font = New System.Drawing.Font("Times New Roman", 10.0!)
+        Me.btnNuevo.Location = New System.Drawing.Point(541, 336)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
+        Me.btnNuevo.TabIndex = 4
+        Me.btnNuevo.Text = "Nuevo"
+        Me.btnNuevo.UseVisualStyleBackColor = False
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -330,12 +347,12 @@ Partial Class FrmClientes
     Friend WithEvents txtId As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtFiltrar As TextBox
-    Friend WithEvents btnBorrar As Button
-    Friend WithEvents btnNuevo As Button
-    Friend WithEvents btnActualizar As Button
-    Friend WithEvents btnCrear As Button
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents DataGridClientes As DataGridView
     Friend WithEvents Label5 As Label
     Friend WithEvents btnSalir As Button
+    Friend WithEvents btnBorrar As Button
+    Friend WithEvents btnNuevo As Button
+    Friend WithEvents btnActualizar As Button
+    Friend WithEvents btnCrear As Button
 End Class

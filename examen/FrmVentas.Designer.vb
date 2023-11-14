@@ -159,8 +159,8 @@ Partial Class FrmVentas
         '
         Me.DataGridVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridVentas.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.DataGridVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.DataGridVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataGridVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.DataGridVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -198,39 +198,56 @@ Partial Class FrmVentas
         '
         'btnBorrar
         '
+        Me.btnBorrar.BackColor = System.Drawing.Color.LightSalmon
+        Me.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBorrar.FlatAppearance.BorderSize = 0
+        Me.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red
+        Me.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBorrar.Location = New System.Drawing.Point(390, 328)
         Me.btnBorrar.Name = "btnBorrar"
         Me.btnBorrar.Size = New System.Drawing.Size(95, 23)
         Me.btnBorrar.TabIndex = 30
         Me.btnBorrar.Text = "Borrar"
-        Me.btnBorrar.UseVisualStyleBackColor = True
+        Me.btnBorrar.UseVisualStyleBackColor = False
         '
         'btnNuevo
         '
+        Me.btnNuevo.BackColor = System.Drawing.Color.Moccasin
+        Me.btnNuevo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNuevo.FlatAppearance.BorderSize = 0
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNuevo.Location = New System.Drawing.Point(542, 330)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Size = New System.Drawing.Size(95, 23)
         Me.btnNuevo.TabIndex = 31
         Me.btnNuevo.Text = "Nuevo"
-        Me.btnNuevo.UseVisualStyleBackColor = True
+        Me.btnNuevo.UseVisualStyleBackColor = False
         '
         'btnActualizar
         '
+        Me.btnActualizar.BackColor = System.Drawing.Color.SteelBlue
+        Me.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnActualizar.FlatAppearance.BorderSize = 0
+        Me.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnActualizar.Location = New System.Drawing.Point(246, 328)
         Me.btnActualizar.Name = "btnActualizar"
         Me.btnActualizar.Size = New System.Drawing.Size(95, 23)
         Me.btnActualizar.TabIndex = 29
         Me.btnActualizar.Text = "Actualizar"
-        Me.btnActualizar.UseVisualStyleBackColor = True
+        Me.btnActualizar.UseVisualStyleBackColor = False
         '
         'btnCrear
         '
+        Me.btnCrear.BackColor = System.Drawing.Color.LightGreen
+        Me.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnCrear.FlatAppearance.BorderSize = 0
+        Me.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCrear.Location = New System.Drawing.Point(108, 328)
         Me.btnCrear.Name = "btnCrear"
         Me.btnCrear.Size = New System.Drawing.Size(95, 23)
         Me.btnCrear.TabIndex = 28
         Me.btnCrear.Text = "Crear"
-        Me.btnCrear.UseVisualStyleBackColor = True
+        Me.btnCrear.UseVisualStyleBackColor = False
         '
         'TabPage2
         '
@@ -343,7 +360,7 @@ Partial Class FrmVentas
         Me.DataGridProductosMensuales.AccessibleRole = System.Windows.Forms.AccessibleRole.RowHeader
         Me.DataGridProductosMensuales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridProductosMensuales.BackgroundColor = System.Drawing.SystemColors.ControlLight
-        Me.DataGridProductosMensuales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
+        Me.DataGridProductosMensuales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.DataGridProductosMensuales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption

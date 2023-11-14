@@ -49,3 +49,4 @@ C:\Users\PC\Desktop\sistema-ventas\examen\obj\Debug\examen.exe
 C:\Users\PC\Desktop\sistema-ventas\examen\obj\Debug\examen.xml
 C:\Users\PC\Desktop\sistema-ventas\examen\obj\Debug\examen.pdb
 C:\Users\Franco\Desktop\sistema\examen\obj\Debug\examen.FrmCartel.resources
+C:\Users\Franco\Desktop\sistema\examen\bin\Debug\App.config

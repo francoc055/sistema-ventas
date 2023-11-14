@@ -124,7 +124,7 @@ Public Class VentasDao
     ''' realizo query para la eliminacion de una venta y sus productos asociados en la base de datos
     ''' </summary>
     ''' <param name="id">id del objeto venta</param>
-    Public Sub Delete(id As Integer)
+    Public Function Delete(id As Integer)
         comando.Parameters.Clear()
         conexion.Open()
         Using transaction As SqlTransaction = conexion.BeginTransaction
@@ -136,6 +136,7 @@ Public Class VentasDao
                 comando.ExecuteNonQuery()
 
                 transaction.Commit()
+                Return True
             Catch ex As Exception
                 transaction.Rollback()
                 Console.WriteLine(ex.ToString())
@@ -144,7 +145,9 @@ Public Class VentasDao
             End Try
         End Using
 
-    End Sub
+    End Function
+
+
 
 
 

@@ -22,5 +22,365 @@ examen
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:examen.FrmAltaVenta.CargarDataGridCorreoConCliente(entidades.Clientes)">
+ <summary>
+ cargo data grid con el correo del cliente a actualizar 
+ </summary>
+ <param name="cliente"></param>
+</member>
+<member name="M:examen.FrmAltaVenta.CargarDataGridCorreos">
+ <summary>
+ cargo en el data grid los correos de los clientes guardados en la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmAltaVenta.DataGridCorreos_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ guardo el id y el correo del cliente al cual se le hizo click en el data grid
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmAltaVenta.CargarComboboxProductos">
+ <summary>
+ cargo el combobox con los productos existentes en la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmAltaVenta.cbProductos_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ verifico si hubo un cambio el combobox
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <returns>el elemento seleccionado en el combobox</returns>
+</member>
+<member name="M:examen.FrmAltaVenta.btnCargarProducto_Click(System.Object,System.EventArgs)">
+ <summary>
+ al presionar el boton se carga en el data grid el elemento establecido en el combobox
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmAltaVenta.CargarDataGridProductos(entidades.Productos,System.Int32)">
+ <summary>
+ carga el data grid de productos
+ </summary>
+ <param name="producto">producto elegido</param>
+ <param name="cantidad">cantidad del producto establecida</param>
+</member>
+<member name="M:examen.FrmAltaVenta.LimpiarFiltros_Click(System.Object,System.EventArgs)">
+ <summary>
+ limpia los todo lo que se haya seleccionado, tanto cliente como productos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmAltaVenta.btnCrearVenta_Click(System.Object,System.EventArgs)">
+ <summary>
+ mediante una query se realiza la insercion de la venta con sus respectivos productos
+ validando que estos hayan sido seleccionados
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmAltaVenta.CalcularTotal">
+ <summary>
+ calcula el total de una venta
+ </summary>
+ <returns>totald de una venta</returns>
+</member>
+<member name="M:examen.FrmAltaVenta.CalcularTotalDeUnProducto(System.Windows.Forms.DataGridViewRow)">
+ <summary>
+ calcula el total de un producto de la venta
+ </summary>
+ <param name="fila"></param>
+ <returns>total de un producto de la venta</returns>
+</member>
+<member name="M:examen.FrmAltaVenta.InsertarProductosDeUnaVenta(DAO.VentasDao,System.Int32)">
+ <summary>
+ recorre el data grid de productos para hacer la insercion de estos en la base de datos
+ </summary>
+ <param name="dao"></param>
+ <param name="idVenta"></param>
+ <returns></returns>
+</member>
+<member name="M:examen.FrmAltaVenta.DataGridProducto_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ al hacer click en algun elemento del data grid de productos existe la posibilidad mediante una ventana modal
+ eliminar dicho elemento individualmente
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.BloquearBotones">
+ <summary>
+ bloque botones del form
+ </summary>
+</member>
+<member name="M:examen.FrmClientes.btnCrear_Click(System.Object,System.EventArgs)">
+ <summary>
+ carga informacion de los textbox y los carga para crear un cliente, invocando un metodo para
+ hacer la insercion en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.CargarDataGrid">
+ <summary>
+ cargo el data grid view de cliente con la informacion que obtengo de la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmClientes.EsCorreoElectronicoValido(System.String)">
+ <summary>
+ verifico que el correo sea valido
+ </summary>
+ <param name="correo"></param>
+ <returns></returns>
+</member>
+<member name="M:examen.FrmClientes.DataGridClientes_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ al hacer click en una fila del data grid view, verifico el valor de la columnas y cargo los textbox con 
+ la informacion asociada
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.btnNuevo_Click(System.Object,System.EventArgs)">
+ <summary>
+ bloquea botones y limpia el groupbox
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.LimpiarGroupBox">
+ <summary>
+ limpia el groupbox que contiene a los textbox
+ </summary>
+</member>
+<member name="M:examen.FrmClientes.btnActualizar_Click(System.Object,System.EventArgs)">
+ <summary>
+carga informacion de los textbox y los carga para actualizar un cliente, invocando un metodo para
+ hacer el update en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.btnBorrar_Click(System.Object,System.EventArgs)">
+ <summary>
+carga informacion de los textbox y los carga para eliminar un cliente, invocando un metodo para
+ hacer el delete en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.txtFiltrar_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ al haber un cambio en el textbox, se filtra buscando en todos los valores de las columnas
+ si hay alguna similitud se deja visible, de lo contrario no se deja visible en el data grid
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.btnSalir_Click(System.Object,System.EventArgs)">
+ <summary>
+ cierra el formulario actual y abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmClientes.FrmClientes_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ una ves cerrado el formulario, abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.BloquearBotones">
+ <summary>
+ bloque botones del form
+ </summary>
+</member>
+<member name="M:examen.FrmProductos.btnCrear_Click(System.Object,System.EventArgs)">
+ <summary>
+ carga informacion de los textbox y los carga para crear un producto, invocando un metodo para
+ hacer la insercion en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.CargarDataGrid">
+ <summary>
+ cargo el data grid view de productos con la informacion que obtengo de la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmProductos.LimpiarGroupBox">
+ <summary>
+ limpia el groupbox que contiene a los textbox
+ </summary>
+</member>
+<member name="M:examen.FrmProductos.DataGridProductos_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ al hacer click en una fila del data grid view, verifico el valor de la columnas y cargo los textbox con 
+ la informacion asociada 
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.btnNuevo_Click(System.Object,System.EventArgs)">
+ <summary>
+ bloquea botones y limpia el groupbox
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.btnActualizar_Click(System.Object,System.EventArgs)">
+ <summary>
+actualiza un producto seleccionado, invocando un metodo para
+ hacer el update en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.btnBorrar_Click(System.Object,System.EventArgs)">
+ <summary>
+elimina un producto seleccionado, invocando un metodo para
+ hacer el delete en la base de datos
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.txtFiltrar_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ al haber un cambio en el textbox, se filtra buscando en todos los valores de las columnas
+ si hay alguna similitud se deja visible, de lo contrario no se deja visible en el data grid
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.btnFiltrarPorPrecio_Click(System.Object,System.EventArgs)">
+ <summary>
+ toma dos precios uno minimo y otro maximo y busca productos con precios entre esos limites
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.LimpiarFiltros_Click(System.Object,System.EventArgs)">
+ <summary>
+ limpia todos los filtros que haya tanto por busqueda de texto como filtrado de precios
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.btnSalir_Click(System.Object,System.EventArgs)">
+ <summary>
+ cierra el formulario actual y abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmProductos.FrmProductos_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ una ves cerrado el formulario, abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.txtFiltrar_TextChanged(System.Object,System.EventArgs)">
+ <summary>
+ al haber un cambio en el textbox, se filtra buscando en todos los valores de las columnas
+ si hay alguna similitud se deja visible, de lo contrario no se deja visible en el data grid
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.CargarDataGridVentas">
+ <summary>
+ cargo el data grid view de ventas con la informacion que obtengo de la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmVentas.btnCrear_Click(System.Object,System.EventArgs)">
+ <summary>
+ instancio un formulario para dar de alta una venta con sus productos, si el formulario devuelve OK
+ se carga el data grid de ventas
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.DataGridVentas_CellClick(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+ <summary>
+ cuando hago click en una fila del data grid guardo el id del cliente para la posibilidad 
+ de actualizar o dar de baja la venta asociada al cliente
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.btnBorrar_Click(System.Object,System.EventArgs)">
+ <summary>
+ borro la venta seleccionada
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.btnNuevo_Click(System.Object,System.EventArgs)">
+ <summary>
+ bloqueo los botones de actualizar, eliminar y limpio cualquier informacion que haya quedado
+ de otra venta
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.btnActualizar_Click(System.Object,System.EventArgs)">
+ <summary>
+ instancio un formulario para ya cargado con la informacion de la venta seleccionada
+ con la posibilida de actualizarla, si el formulario devuelve OK
+ se realiza la actualizacion de dicha venta
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.btnSalir_Click(System.Object,System.EventArgs)">
+ <summary>
+ cierra el formulario actual y abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.FrmVentas_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+ <summary>
+ una ves cerrado el formulario, abre una instancia del formulario de inicio
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.CargarComboboxCorreos">
+ <summary>
+ cargo combobox con los correos de los clientes que obtengo de la base de datos
+ </summary>
+</member>
+<member name="M:examen.FrmVentas.CargarDataGridDatosVentas(entidades.Clientes)">
+ <summary>
+ cargo data grid con los datos de las ventas que obtengo de la base de datos
+ </summary>
+ <param name="cliente"></param>
+</member>
+<member name="M:examen.FrmVentas.cbCorreosClientes_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ verifico si hubo un cambio en el combobox e invoco al metodo encargado de rellenar el data grid de los datos de venta
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.cbMes_SelectedIndexChanged(System.Object,System.EventArgs)">
+ <summary>
+ verifico si hubo un cambio en el combo box e invoco al metodo encargado de rellenar el data grid
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:examen.FrmVentas.ElegirMes">
+ <summary>
+ segun lo seleccionado en el combobox realizo una query obteniendo las cantidades vendidas
+ de productos mensualmente
+ </summary>
+</member>
 </members>
 </doc>
