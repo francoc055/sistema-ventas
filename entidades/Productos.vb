@@ -51,11 +51,14 @@
     ''' <param name="categoria">categoria del producto a dar de alta</param>
     ''' <returns>retorna TRUE si existe el producto, caso contrario FALSE</returns>
     Public Shared Function VerificarProductoExistente(listaProductos As List(Of Productos), nombre As String, categoria As String)
-        For Each productos As Productos In listaProductos
-            If productos.nombre = nombre And productos.categoria = categoria Then
-                Return True
-            End If
-        Next
+        If listaProductos IsNot Nothing Then
+            For Each productos As Productos In listaProductos
+                If productos.nombre = nombre And productos.categoria = categoria Then
+                    Return True
+                End If
+            Next
+        End If
+
 
         Return False
     End Function

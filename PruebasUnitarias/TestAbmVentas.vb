@@ -37,9 +37,9 @@ Imports entidades
         Dim dao = VentasDao.ObjetoAcceso()
         Dim venta = New Ventas() With {.id = 56, .idCliente = 25, .fecha = New Date().Now(), .total = 3000}
         Try
-            Dim id = dao.Update(venta)
+            Dim ret = dao.Update(venta)
 
-            Assert.IsTrue(id > 0)
+            Assert.IsTrue(ret = True)
         Catch ex As Exception
             Assert.Fail($"Se produjo una excepción: {ex.Message}")
         End Try

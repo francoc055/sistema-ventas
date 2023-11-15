@@ -92,7 +92,8 @@ Public Class VentasDao
     ''' realizo query para actualizar los campos de un objeto venta en la base de datos
     ''' </summary>
     ''' <param name="venta">objeto venta</param>
-    Public Sub Update(venta As Ventas)
+    ''' <returns>true si no hubo problemas</returns>
+    Public Function Update(venta As Ventas)
         Try
             comando.Parameters.Clear()
             conexion.Open()
@@ -107,13 +108,13 @@ Public Class VentasDao
             comando.Parameters.AddWithValue("@id", venta.id)
 
             comando.ExecuteNonQuery()
-
+            Return True
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
         Finally
             conexion.Close()
         End Try
-    End Sub
+    End Function
 
 
 

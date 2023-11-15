@@ -51,11 +51,13 @@
     ''' <param name="correo">correo del cliente a dar de alta</param>
     ''' <returns>retorna TRUE si existe el cliente, caso contrario FALSE</returns>
     Public Shared Function VerificarClienteExistente(listaClientes As List(Of Clientes), correo As String)
-        For Each cliente As Clientes In listaClientes
-            If cliente.correo = correo Then
-                Return True
-            End If
-        Next
+        If listaClientes IsNot Nothing Then
+            For Each cliente As Clientes In listaClientes
+                If cliente.correo = correo Then
+                    Return True
+                End If
+            Next
+        End If
 
         Return False
     End Function

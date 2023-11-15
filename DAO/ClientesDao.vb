@@ -9,11 +9,16 @@ Public Class ClientesDao
     Private Shared ObjetoDao
 
     Private Sub New()
-        cadenaConexion = ConfigurationManager.ConnectionStrings("MiConexion").ConnectionString
-        comando = New SqlCommand()
-        conexion = New SqlConnection(cadenaConexion)
-        comando.CommandType = System.Data.CommandType.Text
-        comando.Connection = conexion
+        Try
+            cadenaConexion = ConfigurationManager.ConnectionStrings("MiConexion").ConnectionString
+            comando = New SqlCommand()
+            conexion = New SqlConnection(cadenaConexion)
+            comando.CommandType = System.Data.CommandType.Text
+            comando.Connection = conexion
+        Catch ex As Exception
+            Console.WriteLine(ex.ToString())
+        End Try
+
     End Sub
 
 

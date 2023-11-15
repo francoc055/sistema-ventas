@@ -172,7 +172,11 @@ Public Class FrmVentas
         For Each f As DataGridViewRow In DataGridVentas.Rows
             If Convert.ToInt32(f.Index.ToString()) Mod 2 = 0 Then
                 DataGridVentas.Rows(f.Index).DefaultCellStyle.BackColor = Color.LightBlue
+            Else
+                DataGridVentas.Rows(f.Index).DefaultCellStyle.BackColor = Color.WhiteSmoke
             End If
+
+
         Next
         btnActualizar.Enabled = False
         btnBorrar.Enabled = False

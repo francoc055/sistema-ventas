@@ -57,13 +57,15 @@ Public Class FrmAltaVenta
     Public Sub CargarDataGridCorreos()
         Dim daoClientes = ClientesDao.ObjetoAcceso()
         Dim listaClientes As List(Of Clientes) = daoClientes.GetAll()
+        If listaClientes IsNot Nothing Then
+            For Each item As Clientes In listaClientes
+                Dim fila As DataGridViewRow = New DataGridViewRow()
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = item.id})
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = item.correo})
+                DataGridCorreos.Rows.Add(fila)
+            Next
+        End If
 
-        For Each item As Clientes In listaClientes
-            Dim fila As DataGridViewRow = New DataGridViewRow()
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = item.id})
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = item.correo})
-            DataGridCorreos.Rows.Add(fila)
-        Next
     End Sub
 
     ''' <summary>
@@ -154,26 +156,29 @@ Public Class FrmAltaVenta
     ''' <param name="producto">producto elegido</param>
     ''' <param name="cantidad">cantidad del producto establecida</param>
     Public Sub CargarDataGridProductos(producto As Productos, cantidad As Integer)
-        If Me.cliente Is Nothing Then
-            Dim fila As DataGridViewRow = New DataGridViewRow()
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.id})
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.nombre})
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.precio})
-            fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cantidad})
-            DataGridProducto.Rows.Add(fila)
+        If producto IsNot Nothing Then
+            If Me.cliente Is Nothing Then
+                Dim fila As DataGridViewRow = New DataGridViewRow()
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.id})
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.nombre})
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = producto.precio})
+                fila.Cells.Add(New DataGridViewTextBoxCell With {.Value = cantidad})
+                DataGridProducto.Rows.Add(fila)
 
-        Else
-            Dim dataTableProductos As DataTable = DirectCast(DataGridProducto.DataSource, DataTable)
+            Else
+                Dim dataTableProductos As DataTable = DirectCast(DataGridProducto.DataSource, DataTable)
 
-            Dim nuevaFila As DataRow = dataTableProductos.NewRow()
-            nuevaFila("ID") = producto.id
-            nuevaFila("Nombre") = producto.nombre
-            nuevaFila("Precio") = producto.precio
-            nuevaFila("Cant") = cantidad
+                Dim nuevaFila As DataRow = dataTableProductos.NewRow()
+                nuevaFila("ID") = producto.id
+                nuevaFila("Nombre") = producto.nombre
+                nuevaFila("Precio") = producto.precio
+                nuevaFila("Cant") = cantidad
 
 
-            dataTableProductos.Rows.Add(nuevaFila)
+                dataTableProductos.Rows.Add(nuevaFila)
+            End If
         End If
+
 
     End Sub
 

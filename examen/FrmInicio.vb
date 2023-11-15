@@ -9,8 +9,8 @@
         InitializeComponent()
 
         ' Configurar el temporizador
-        timer.Interval = 100 ' Intervalo en milisegundos
-        timer.Start()
+        Timer.Interval = 100 ' Intervalo en milisegundos
+        Timer.Start()
     End Sub
 
     Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
@@ -21,7 +21,7 @@
             currentIndex += 1
         Else
             ' Detener el temporizador cuando se ha mostrado todo el texto
-            timer.Stop()
+            Timer.Stop()
         End If
     End Sub
 

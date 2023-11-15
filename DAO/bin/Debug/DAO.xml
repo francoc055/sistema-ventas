@@ -133,6 +133,7 @@ DAO
  realizo query para actualizar los campos de un objeto venta en la base de datos
  </summary>
  <param name="venta">objeto venta</param>
+ <returns>true si no hubo problemas</returns>
 </member>
 <member name="M:DAO.VentasDao.Delete(System.Int32)">
  <summary>
